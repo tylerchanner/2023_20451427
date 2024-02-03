@@ -1,0 +1,5 @@
+git show: Displays various types of information about the repository such as commits, tags, and changes. Useful for inspecting the history and details of specific Git objects.
+git log: Shows the commit logs. It's a record of commits in the repository, useful for understanding the history of changes.
+git checkout: Used for switching between branches or restoring working tree files. It's a way to navigate and manage different versions/branches of the code.
+git init: Initializes a new Git repository. This is the first command used in a new project to start version control.
+git reset: Resets the current HEAD to a specified state. It's used to undo changes in the repository

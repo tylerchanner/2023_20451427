@@ -182,6 +182,7 @@ _site/
 *.class
 *.dll
 *.exe
+*.obj
 *.o
 *.so
 *.pyc

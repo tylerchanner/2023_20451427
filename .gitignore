@@ -39,6 +39,7 @@ $RECYCLE.BIN/
 build/
 *-build*
 build*
+html/
 debug_build
 release_build
 /bin

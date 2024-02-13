@@ -2,25 +2,17 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 project(calc)
 
-# This project contains a library
-add_library(maths adder.cpp)
-# Note: you could force CMake to always build a static/shared library:
-# add_library(maths STATIC adder.cpp)
-# add_library(maths SHARED adder.cpp)
-
-if(NOT BUILD_SHARED_LIBS)
-    # if static libs are compiled we need
-    # to somehow communicate that to the
-    # source code. The definition will be
-    # used to determine how MATHSLIB_API
-    # is defined in adder.h
-    add_definitions(-Dmaths_STATIC)
-endif()
+# This project contains a dynamic library
+add_library(maths SHARED adder.cpp)
+# Note: We remove the STATIC keyword to build a dynamic library by default
 
 # It also contains an executable
 add_executable(calc calc.cpp)
 
 # The executable uses the library
 target_link_libraries(calc maths)
+
+# Define the preprocessor flag 'maths_EXPORTS' when building the library
+target_compile_definitions(maths PRIVATE maths_EXPORTS)
 
 # /calc_cmake/CMakeLists.txt

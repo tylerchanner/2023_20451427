@@ -36,6 +36,14 @@ $RECYCLE.BIN/
 # =========================
 # Visual Studio
 # =========================
+build/
+*-build*
+build*
+debug_build
+release_build
+/bin
+/lib
+/install
 .vs/
 .vscode/
 *.opendb

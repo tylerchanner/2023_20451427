@@ -1,27 +1,46 @@
+/**
+ * @file mainwindow.h
+ * @brief Header file for the MainWindow class in a Qt application.
+ *
+ * This file declares the MainWindow class, which is responsible for initializing
+ * the application's main window and managing UI interactions. It includes setup
+ * for a model-based tree view and handling button clicks to display messages in
+ * the status bar.
+ */
+
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "ModelPartList.h" // Include the header for your ModelPartList
+#include "ModelPart.h" // Include this if you'll refer to ModelPart directly in MainWindow
 #include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+namespace Ui {
+    class MainWindow;
+}
 /**
- * @brief The MainWindow class manages the main window and its UI elements.
+ * @class MainWindow
+ * @brief The MainWindow class manages the main window and its UI components.
+ *
+ * The MainWindow class setups the UI, initializes a model for a tree view,
+ * and handles user interactions such as button clicks.
  */
-    class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     /**
-     * @brief Constructs a MainWindow object.
-     * @param parent The parent widget, nullptr if there's no parent.
-     */
+    * @brief Constructs a MainWindow object.
+    * @param parent The parent widget, nullptr if there's no parent.
+    */
     explicit MainWindow(QWidget* parent = nullptr);
-
     /**
      * @brief Destroys the MainWindow object.
      */
@@ -35,7 +54,7 @@ signals:
      */
     void statusUpdateMessage(const QString& message, int timeout);
 
-public slots:
+ public slots:
     /**
      * @brief Handles the first button click.
      */
@@ -46,8 +65,11 @@ public slots:
      */
     void handleButton2();
 
+
+
 private:
     Ui::MainWindow* ui;
+    ModelPartList* partList; // Pointer to your ModelPartList
 };
 
 #endif // MAINWINDOW_H

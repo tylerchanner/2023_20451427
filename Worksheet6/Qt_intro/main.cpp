@@ -2,6 +2,7 @@
 #include <QApplication>
 
 /**
+ * @file main.cpp  
  * @brief The entry point of the application.
  *
  * Initializes the QApplication object, creates the main window, and enters the application's main event loop.

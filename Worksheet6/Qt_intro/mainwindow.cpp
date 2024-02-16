@@ -7,6 +7,8 @@
  * UI events such as button clicks.
  */
 
+
+#include <QFileDialog>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -81,9 +83,27 @@ void MainWindow::handleTreeClicked() {
     emit statusUpdateMessage("The selected item is: " + text, 2000);
 }
 
+
+    /**
+ * @brief Slot to handle the action triggered for opening a file.
+ */
 void MainWindow::on_actionOpen_File_triggered() {
+
     emit statusUpdateMessage(QString("Open File Action Triggered"), 0);
+
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        tr("Open File"),
+        QDir::homePath(), // Start directory
+        tr("STL Files (*.stl);;Text Files (*.txt)")); // File filters
+
+    // Check if fileName is not empty, meaning the user selected a file
+    if (!fileName.isEmpty()) {
+        emit statusUpdateMessage(QString("The selected file is: %1").arg(fileName), 5000);
+    }
 }
+
+
 
 /**
  * @brief Destroys the MainWindow object, including UI components and model list.

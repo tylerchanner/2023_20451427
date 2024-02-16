@@ -66,7 +66,6 @@ MainWindow::MainWindow(QWidget* parent) :
 
     // Connect custom signal to status bar showMessage slot
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
-
 }
 
 void MainWindow::handleTreeClicked() {
@@ -82,6 +81,9 @@ void MainWindow::handleTreeClicked() {
     emit statusUpdateMessage("The selected item is: " + text, 2000);
 }
 
+void MainWindow::on_actionOpen_File_triggered() {
+    emit statusUpdateMessage(QString("Open File Action Triggered"), 0);
+}
 
 /**
  * @brief Destroys the MainWindow object, including UI components and model list.

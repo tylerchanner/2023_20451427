@@ -67,6 +67,8 @@ signals:
 
     void handleTreeClicked();
 
+    void on_actionOpen_File_triggered();
+
 
 
 private:

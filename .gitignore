@@ -116,6 +116,8 @@ artifacts/
 .idea/
 *.sln.iml
 
+*.png
+
 # User-specific stuff
 *.rsuser
 *.ReSharper*/

@@ -22,12 +22,14 @@ set(PROJECT_SOURCES
         ModelPartList.cpp
         ModelPart.h
         ModelPartList.h
+	icons.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Qt_intro
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        icons.qrc
     )
 else()
     if(ANDROID)

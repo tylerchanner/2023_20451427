@@ -65,6 +65,8 @@ signals:
      */
     void handleButton2();
 
+    void handleTreeClicked();
+
 
 
 private:

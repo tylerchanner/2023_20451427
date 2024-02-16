@@ -60,7 +60,28 @@ MainWindow::MainWindow(QWidget* parent) :
 
     // Connect the custom signal to the QStatusBar's showMessage slot
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
+    
+    // Connect tree view click signal to the slot
+    connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::handleTreeClicked);
+
+    // Connect custom signal to status bar showMessage slot
+    connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
+
 }
+
+void MainWindow::handleTreeClicked() {
+    // Get the index of the selected item
+    QModelIndex index = ui->treeView->currentIndex();
+
+    // Get a pointer to the item from the index
+    ModelPart* selectedPart = static_cast<ModelPart*>(index.internalPointer());
+
+    // Retrieve the name string from the internal QVariant data array
+    QString text = selectedPart->data(0).toString();
+
+    emit statusUpdateMessage("The selected item is: " + text, 2000);
+}
+
 
 /**
  * @brief Destroys the MainWindow object, including UI components and model list.

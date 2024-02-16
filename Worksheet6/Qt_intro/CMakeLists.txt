@@ -23,6 +23,9 @@ set(PROJECT_SOURCES
         ModelPart.h
         ModelPartList.h
 	icons.qrc
+        optiondialog.cpp
+        optiondialog.h
+        optiondialog.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -30,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         icons.qrc
+        optiondialog.h optiondialog.cpp optiondialog.ui
     )
 else()
     if(ANDROID)

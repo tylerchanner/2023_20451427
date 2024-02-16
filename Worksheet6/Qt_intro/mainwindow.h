@@ -16,6 +16,8 @@
 #include "ModelPartList.h" // Include the header for your ModelPartList
 #include "ModelPart.h" // Include this if you'll refer to ModelPart directly in MainWindow
 #include <QString>
+#include "optiondialog.h" // Adjust the include to match your dialog's actual header file name
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

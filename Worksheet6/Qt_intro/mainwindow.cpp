@@ -11,6 +11,7 @@
 #include <QFileDialog>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "optiondialog.h"
 
  /**
   * @brief Constructs a MainWindow object.
@@ -68,7 +69,11 @@ MainWindow::MainWindow(QWidget* parent) :
 
     // Connect custom signal to status bar showMessage slot
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
-}
+
+        }
+    // Repeat for green and blue sliders
+
+
 
 void MainWindow::handleTreeClicked() {
     // Get the index of the selected item
@@ -128,7 +133,28 @@ void MainWindow::handleButton1() {
  * @brief Slot to handle the second button's click event, updating the status bar.
  */
 
+
 void MainWindow::handleButton2() {
-    // Emit signal with a message indicating the second button was clicked
-    emit statusUpdateMessage("Button 2 was clicked.", 2000); // Display for 2000 ms
+    OptionDialog dialog(this);
+
+    // Pre-dialog setup if needed (e.g., connect signals to slots for updating labels)
+
+    if (dialog.exec() == QDialog::Accepted) {
+        QString name = dialog.getName();
+        QColor color = dialog.getColor();
+        bool isVisible = dialog.getVisibility();
+
+        QString visibilityText = isVisible ? "Visible" : "Not Visible";
+        QString message = QString("Name: %1, RGB: %2,%3,%4, Visibility: %5")
+            .arg(name)
+            .arg(color.red())
+            .arg(color.green())
+            .arg(color.blue())
+            .arg(visibilityText);
+
+        emit statusUpdateMessage(message, 5000);
+    }
+    else {
+        emit statusUpdateMessage("Dialog rejected", 0);
+    }
 }

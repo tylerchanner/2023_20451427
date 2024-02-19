@@ -20,6 +20,10 @@ public:
     QColor getColor() const;
     bool getVisibility() const;
 
+    void setName(const QString& name);
+    void setColor(const QColor& color);
+    void setVisibility(bool isVisible);
+
 private:
     Ui::OptionDialog* ui;
 };

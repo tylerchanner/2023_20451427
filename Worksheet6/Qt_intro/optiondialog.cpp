@@ -36,3 +36,17 @@ QColor OptionDialog::getColor() const {
 bool OptionDialog::getVisibility() const {
     return ui->checkBox->isChecked();
 }
+
+void OptionDialog::setName(const QString& name) {
+    ui->plainTextEdit->setPlainText(name);
+}
+
+void OptionDialog::setColor(const QColor& color) {
+    ui->horizontalScrollBarRed->setValue(color.red());
+    ui->horizontalScrollBarGreen->setValue(color.green());
+    ui->horizontalScrollBarBlue->setValue(color.blue());
+}
+
+void OptionDialog::setVisibility(bool isVisible) {
+    ui->checkBox->setChecked(isVisible);
+}

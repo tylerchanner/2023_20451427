@@ -31,6 +31,10 @@ MainWindow::MainWindow(QWidget* parent) :
     // Link it to the tree view in the GUI
     ui->treeView->setModel(this->partList);
 
+    ui->treeView->setContextMenuPolicy(Qt::ActionsContextMenu);
+
+
+
     // Manually create a model tree
     ModelPart* rootItem = this->partList->getRootItem();
 
@@ -38,9 +42,10 @@ MainWindow::MainWindow(QWidget* parent) :
     for (int i = 0; i < 3; i++) {
         QString name = QString("TopLevel %1").arg(i);
         QString visible("true");
+        QString colour("255,255,255");
 
         // Create child item
-        ModelPart* childItem = new ModelPart({ name, visible });
+        ModelPart* childItem = new ModelPart({ name, visible, colour });
 
         // Append to tree top-level
         rootItem->appendChild(childItem);
@@ -49,8 +54,9 @@ MainWindow::MainWindow(QWidget* parent) :
         for (int j = 0; j < 5; j++) {
             QString name = QString("Item %1,%2").arg(i).arg(j);
             QString visible("true");
+            QString colour("255,255,255");
 
-            ModelPart* childChildItem = new ModelPart({ name, visible });
+            ModelPart* childChildItem = new ModelPart({ name, visible, colour });
 
             // Append to parent
             childItem->appendChild(childChildItem);
@@ -63,15 +69,25 @@ MainWindow::MainWindow(QWidget* parent) :
 
     // Connect the custom signal to the QStatusBar's showMessage slot
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
-    
+
     // Connect tree view click signal to the slot
     connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::handleTreeClicked);
 
     // Connect custom signal to status bar showMessage slot
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
 
-        }
-    // Repeat for green and blue sliders
+    // Create an action for the context menu
+    ui->treeView->setContextMenuPolicy(Qt::ActionsContextMenu);
+
+    // Create an action for the context menu
+    QAction* actionItemOptions = new QAction(tr("Item Options"), this);
+    connect(actionItemOptions, &QAction::triggered, this, &MainWindow::on_actionItemOptions_triggered);
+
+    // Add the action to the tree view's context menu
+    ui->treeView->addAction(actionItemOptions);
+
+}
+// Repeat for green and blue sliders
 
 
 
@@ -88,14 +104,47 @@ void MainWindow::handleTreeClicked() {
     emit statusUpdateMessage("The selected item is: " + text, 2000);
 }
 
+void MainWindow::on_actionItemOptions_triggered() {
+    QModelIndex index = ui->treeView->currentIndex();
+    if (!index.isValid())
+        return;
 
-    /**
- * @brief Slot to handle the action triggered for opening a file.
- */
+    ModelPart* selectedPart = static_cast<ModelPart*>(index.internalPointer());
+    if (!selectedPart)
+        return;
+
+    // Open the dialog to edit the properties
+    OptionDialog dialog(this);
+    // Set the existing values to the dialog controls
+    dialog.setName(selectedPart->data(0).toString());
+    dialog.setColor(QColor(selectedPart->getColourR(), selectedPart->getColourG(), selectedPart->getColourB()));
+    dialog.setVisibility(selectedPart->visible());
+
+    if (dialog.exec() == QDialog::Accepted) {
+        // Apply the changes
+        QColor color = dialog.getColor();
+        QString colorString = QString::number(color.red()) + "," + QString::number(color.green()) + "," + QString::number(color.blue());
+
+        selectedPart->set(0, QVariant(dialog.getName())); // Set the name
+        selectedPart->set(1, QVariant(dialog.getVisibility() ? "true" : "false")); // Set the visibility
+        selectedPart->set(2, QVariant(colorString)); // Set the color string
+
+        
+        selectedPart->setColour(color.red(), color.green(), color.blue());
+        selectedPart->setVisible(dialog.getVisibility());
+
+
+
+        // Emit a message or update the view as needed
+        emit statusUpdateMessage("Item updated.", 2000);
+    }
+}
+
+
+/**
+* @brief Slot to handle the action triggered for opening a file.
+*/
 void MainWindow::on_actionOpen_File_triggered() {
-
-    emit statusUpdateMessage(QString("Open File Action Triggered"), 0);
-
     QString fileName = QFileDialog::getOpenFileName(
         this,
         tr("Open File"),
@@ -104,7 +153,32 @@ void MainWindow::on_actionOpen_File_triggered() {
 
     // Check if fileName is not empty, meaning the user selected a file
     if (!fileName.isEmpty()) {
-        emit statusUpdateMessage(QString("The selected file is: %1").arg(fileName), 5000);
+        // Extract just the filename without the path
+        QFileInfo fileInfo(fileName);
+        QString justFileName = fileInfo.fileName();
+
+        // Get the current index of the selected item in the tree view
+        QModelIndex currentIndex = ui->treeView->currentIndex();
+
+        // Ensure a valid item is selected
+        if (currentIndex.isValid()) {
+            // Retrieve the selected part using the current index
+            ModelPart* selectedPart = static_cast<ModelPart*>(currentIndex.internalPointer());
+
+            if (selectedPart) {
+                // Update the name of the selected part
+                selectedPart->set(0, QVariant(justFileName));
+
+                // If your model requires you to manually trigger an update (for example, to refresh the view),
+                // you may need to emit a signal or call a method on your model to inform it of the change.
+                // This depends on your specific model implementation.
+                // Example:
+                // emit dataChanged(currentIndex, currentIndex);
+
+                // Inform the user about the update
+                emit statusUpdateMessage(QString("The selected file is: %1").arg(fileName), 5000);
+            }
+        }
     }
 }
 
@@ -157,4 +231,4 @@ void MainWindow::handleButton2() {
     else {
         emit statusUpdateMessage("Dialog rejected", 0);
     }
-}
+} 

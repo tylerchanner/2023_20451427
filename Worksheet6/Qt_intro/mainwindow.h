@@ -56,7 +56,7 @@ signals:
      */
     void statusUpdateMessage(const QString& message, int timeout);
 
- public slots:
+public slots:
     /**
      * @brief Handles the first button click.
      */
@@ -71,6 +71,7 @@ signals:
 
     void on_actionOpen_File_triggered();
 
+    void on_actionItemOptions_triggered();
 
 
 private:

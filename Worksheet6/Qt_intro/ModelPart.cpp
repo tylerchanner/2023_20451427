@@ -19,7 +19,7 @@
 
 
 ModelPart::ModelPart(const QList<QVariant>& data, ModelPart* parent)
-    : m_itemData(data), m_parentItem(parent) {
+    : m_itemData(data), m_parentItem(parent), isVisible(false) {
 
     /* You probably want to give the item a default colour */
 }
@@ -61,25 +61,19 @@ int ModelPart::columnCount() const {
 }
 
 QVariant ModelPart::data(int column) const {
-    /* Return the data associated with a column of this item
-     *  Note on the QVariant type - it is a generic placeholder type
-     *  that can take on the type of most Qt classes. It allows each
-     *  column or property to store data of an arbitrary type.
-     */
     if (column < 0 || column >= m_itemData.size())
         return QVariant();
-    return m_itemData.at(column);
+    return m_itemData[column];
 }
+
 
 
 void ModelPart::set(int column, const QVariant& value) {
-    /* Set the data associated with a column of this item
-     */
-    if (column < 0 || column >= m_itemData.size())
-        return;
-
-    m_itemData.replace(column, value);
+    if (column >= 0 && column < m_itemData.size()) {
+        m_itemData[column] = value;
+    }
 }
+
 
 
 ModelPart* ModelPart::parentItem() {
@@ -97,44 +91,34 @@ int ModelPart::row() const {
 
 void ModelPart::setColour(const unsigned char R, const unsigned char G, const unsigned char B) {
     /* This is a placeholder function that will be used in the next worksheet */
-
+    color = QColor(R, G, B);
     /* As the name suggests ... */
 }
 
 unsigned char ModelPart::getColourR() {
     /* This is a placeholder function that will be used in the next worksheet */
-
-    /* As the name suggests ... */
-    return 0;   // needs updating
+    return static_cast<unsigned char>(color.red());
 }
 
 unsigned char ModelPart::getColourG() {
     /* This is a placeholder function that will be used in the next worksheet */
-
-    /* As the name suggests ... */
-    return 0;   // needs updating
+    return static_cast<unsigned char>(color.green());
 }
 
 
 unsigned char ModelPart::getColourB() {
     /* This is a placeholder function that will be used in the next worksheet */
-
-    /* As the name suggests ... */
-    return 0;   // needs updating
+    return static_cast<unsigned char>(color.blue());
 }
 
 
 void ModelPart::setVisible(bool isVisible) {
-    /* This is a placeholder function that will be used in the next worksheet */
-
-    /* As the name suggests ... */
+    this->isVisible = isVisible;
 }
 
 bool ModelPart::visible() {
     /* This is a placeholder function that will be used in the next worksheet */
-
-    /* As the name suggests ... */
-    return false;
+    return isVisible;
 }
 
 void ModelPart::loadSTL(QString fileName) {

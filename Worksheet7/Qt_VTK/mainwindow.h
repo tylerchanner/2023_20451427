@@ -17,6 +17,11 @@
 #include "ModelPart.h" // Include this if you'll refer to ModelPart directly in MainWindow
 #include <QString>
 #include "optiondialog.h" // Adjust the include to match your dialog's actual header file name
+#include <vtkSmartPointer.h>
+#include <vtkRenderer.h>
+#include <vtkGenericOpenGLRenderWindow.h>
+
+
 
 
 QT_BEGIN_NAMESPACE
@@ -77,6 +82,8 @@ public slots:
 private:
     Ui::MainWindow* ui;
     ModelPartList* partList; // Pointer to your ModelPartList
+    vtkSmartPointer<vtkRenderer> renderer;
+    vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow;
 };
 
 #endif // MAINWINDOW_H

@@ -12,6 +12,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "optiondialog.h"
+#include <vtkGenericOpenGLRenderWindow.h>
+#include <vtkRenderer.h>
+#include <vtkCylinderSource.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkActor.h>
+#include <vtkProperty.h>
+#include <vtkCamera.h>
+
 
  /**
   * @brief Constructs a MainWindow object.
@@ -85,6 +93,35 @@ MainWindow::MainWindow(QWidget* parent) :
 
     // Add the action to the tree view's context menu
     ui->treeView->addAction(actionItemOptions);
+
+
+    // Set up the render window
+    renderWindow = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
+    ui->vtkWidget->setRenderWindow(renderWindow); // Name 'vtkWidget' may differ
+
+    // Set up the renderer
+    renderer = vtkSmartPointer<vtkRenderer>::New();
+    renderWindow->AddRenderer(renderer);
+
+
+    // Create the cylinder
+    vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
+    cylinder->SetResolution(3);
+
+    vtkSmartPointer<vtkPolyDataMapper> cylinderMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+    cylinderMapper->SetInputConnection(cylinder->GetOutputPort());
+
+    vtkSmartPointer<vtkActor> cylinderActor = vtkSmartPointer<vtkActor>::New();
+    cylinderActor->SetMapper(cylinderMapper);
+    cylinderActor->GetProperty()->SetColor(1.0, 5.0, 0.35);
+    cylinderActor->RotateX(30.0);
+    cylinderActor->RotateY(-45.0);
+
+    renderer->AddActor(cylinderActor);
+    renderer->ResetCamera();
+    renderer->GetActiveCamera()->Azimuth(30);
+    renderer->GetActiveCamera()->Elevation(30);
+    renderer->ResetCameraClippingRange();
 
 }
 // Repeat for green and blue sliders

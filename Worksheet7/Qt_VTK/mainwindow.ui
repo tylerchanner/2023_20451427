@@ -31,7 +31,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QVTKOpenGLNativeWidget" name="widget" native="true">
+       <widget class="QVTKOpenGLNativeWidget" name="vtkWidget" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
           <horstretch>0</horstretch>

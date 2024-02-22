@@ -1,4 +1,3 @@
-# doxygen-deploy.yml
 name: doxygen-deploy
 
 on:
@@ -35,5 +34,4 @@ jobs:
         # The branch the action should deploy to.
         branch: gh-pages
         # The folder the action should deploy.
-        folder: ${{ github.workspace }}# doxygen-deploy.yml
-
+        folder: ${{ github.workspace }}/2023_20451427/Worksheet7/Qt_VTK/html

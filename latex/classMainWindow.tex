@@ -1,0 +1,146 @@
+\hypertarget{classMainWindow}{}\doxysection{Main\+Window Class Reference}
+\label{classMainWindow}\index{MainWindow@{MainWindow}}
+
+
+The \mbox{\hyperlink{classMainWindow}{Main\+Window}} class manages the main window and its UI components.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMainWindow}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMainWindow_a930de12c8da1bda6dad9c1548ecb9375}{handle\+Button1}} ()
+\begin{DoxyCompactList}\small\item\em Handles the first button click. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_accf7f1ca023168f0c31d2f9580e8acab}{handle\+Button2}} ()
+\begin{DoxyCompactList}\small\item\em Handles the second button click. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a143bb60757a3e3f88e208eedb2af7539}\label{classMainWindow_a143bb60757a3e3f88e208eedb2af7539}} 
+void \mbox{\hyperlink{classMainWindow_a143bb60757a3e3f88e208eedb2af7539}{handle\+Tree\+Clicked}} ()
+\begin{DoxyCompactList}\small\item\em Handles clicks on the tree view, displaying the selected item\textquotesingle{}s name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a3a4866823ec0a9148c03ade962e65cf3}\label{classMainWindow_a3a4866823ec0a9148c03ade962e65cf3}} 
+void \mbox{\hyperlink{classMainWindow_a3a4866823ec0a9148c03ade962e65cf3}{on\+\_\+action\+Open\+\_\+\+File\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Slot triggered by the action to open and load an STL file. It allows users to select an STL file to load, creating and appending a new \mbox{\hyperlink{classModelPart}{Model\+Part}} based on the file, and updates the rendering accordingly. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_aa3e86f798258224dddea4be926bc879b}\label{classMainWindow_aa3e86f798258224dddea4be926bc879b}} 
+void \mbox{\hyperlink{classMainWindow_aa3e86f798258224dddea4be926bc879b}{on\+\_\+action\+Item\+Options\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Opens a dialog for editing properties of the selected item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMainWindow_a86443ea744fda3e9bad328c2fd1c3d6b}{status\+Update\+Message}} (const QString \&message, int timeout)
+\begin{DoxyCompactList}\small\item\em Signal to update the status bar message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_aa2a5945f9c4bf90022f0a7ad3db34c49}\label{classMainWindow_aa2a5945f9c4bf90022f0a7ad3db34c49}} 
+void \mbox{\hyperlink{classMainWindow_aa2a5945f9c4bf90022f0a7ad3db34c49}{update\+Render}} ()
+\begin{DoxyCompactList}\small\item\em Updates the rendering of the model based on the current tree structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a3efc38e6be895f53a3f973906e4174b8}{update\+Render\+From\+Tree}} (const QModel\+Index \&index)
+\begin{DoxyCompactList}\small\item\em Recursively adds actors to the renderer starting from the provided tree index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMainWindow_a996c5a2b6f77944776856f08ec30858d}{Main\+Window}} (QWidget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classMainWindow}{Main\+Window}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}{$\sim$\+Main\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classMainWindow}{Main\+Window}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classMainWindow}{Main\+Window}} class manages the main window and its UI components. 
+
+The \mbox{\hyperlink{classMainWindow}{Main\+Window}} class setups the UI, initializes a model for a tree view, and handles user interactions such as button clicks. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMainWindow_a996c5a2b6f77944776856f08ec30858d}\label{classMainWindow_a996c5a2b6f77944776856f08ec30858d}} 
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{MainWindow()}{MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{classMainWindow}{Main\+Window}} object. 
+
+Constructor for the \mbox{\hyperlink{classMainWindow}{Main\+Window}} class. Initializes the user interface and connects signals to slots.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget, nullptr if there\textquotesingle{}s no parent. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}\label{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{$\sim$MainWindow}}
+\index{````~MainWindow@{$\sim$MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{$\sim$MainWindow()}{~MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::$\sim$\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the \mbox{\hyperlink{classMainWindow}{Main\+Window}} object. 
+
+Destructor for the \mbox{\hyperlink{classMainWindow}{Main\+Window}} class. Cleans up allocated resources. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMainWindow_a930de12c8da1bda6dad9c1548ecb9375}\label{classMainWindow_a930de12c8da1bda6dad9c1548ecb9375}} 
+\index{MainWindow@{MainWindow}!handleButton1@{handleButton1}}
+\index{handleButton1@{handleButton1}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{handleButton1}{handleButton1}}
+{\footnotesize\ttfamily void Main\+Window\+::handle\+Button1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Handles the first button click. 
+
+Handles the event when the first button is clicked. It emits a signal to update the status message accordingly. \mbox{\Hypertarget{classMainWindow_accf7f1ca023168f0c31d2f9580e8acab}\label{classMainWindow_accf7f1ca023168f0c31d2f9580e8acab}} 
+\index{MainWindow@{MainWindow}!handleButton2@{handleButton2}}
+\index{handleButton2@{handleButton2}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{handleButton2}{handleButton2}}
+{\footnotesize\ttfamily void Main\+Window\+::handle\+Button2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Handles the second button click. 
+
+Handles the event when the second button is clicked. Opens an option dialog for user input and updates the status message based on the dialog\textquotesingle{}s outcome. \mbox{\Hypertarget{classMainWindow_a86443ea744fda3e9bad328c2fd1c3d6b}\label{classMainWindow_a86443ea744fda3e9bad328c2fd1c3d6b}} 
+\index{MainWindow@{MainWindow}!statusUpdateMessage@{statusUpdateMessage}}
+\index{statusUpdateMessage@{statusUpdateMessage}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{statusUpdateMessage}{statusUpdateMessage}}
+{\footnotesize\ttfamily void Main\+Window\+::status\+Update\+Message (\begin{DoxyParamCaption}\item[{const QString \&}]{message,  }\item[{int}]{timeout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal to update the status bar message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to display. \\
+\hline
+{\em timeout} & Duration in milliseconds to display the message. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_a3efc38e6be895f53a3f973906e4174b8}\label{classMainWindow_a3efc38e6be895f53a3f973906e4174b8}} 
+\index{MainWindow@{MainWindow}!updateRenderFromTree@{updateRenderFromTree}}
+\index{updateRenderFromTree@{updateRenderFromTree}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{updateRenderFromTree()}{updateRenderFromTree()}}
+{\footnotesize\ttfamily void Main\+Window\+::update\+Render\+From\+Tree (\begin{DoxyParamCaption}\item[{const QModel\+Index \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Recursively adds actors to the renderer starting from the provided tree index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The starting point in the model tree for adding actors to the render. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mainwindow_8h}{mainwindow.\+h}}\item 
+\mbox{\hyperlink{mainwindow_8cpp}{mainwindow.\+cpp}}\end{DoxyCompactItemize}

@@ -35,4 +35,41 @@ jobs:
         # The branch the action should deploy to.
         branch: gh-pages
         # The folder the action should deploy.
-        folder: ${{ github.workspace }}/Worksheet7/Qt_VTK/html
+        folder: ${{ github.workspace }}# doxygen-deploy.yml
+name: doxygen-deploy
+
+on:
+  push:
+    branches: [ master ] # Note: this needs to be set to your default branch name (this might be "main" rather than "master")
+
+jobs:
+  # The job that will build Qt_VTK
+  deploy-Qt_VTK:
+
+    # Defines the operating system for the virtual computer
+    runs-on: ubuntu-latest
+
+    # A list of steps to follow to complete the build
+    # (a list of commands to execute on the virtual computer)
+    steps:
+
+    # This is a predefined action that checks out a copy of your code
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install doxygen
+      run: sudo apt-get install -y doxygen
+
+    # Run Doxygen on Worksheet5 folder
+    - name: Run Doxygen
+      working-directory: ${{ github.workspace }}/Worksheet7/Qt_VTK
+      run: doxygen
+
+    # Deploy html output from Doxygen to gh-pages branch
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.5.0
+      with:
+        # The branch the action should deploy to.
+        branch: gh-pages
+        # The folder the action should deploy.
+        folder: ${{ github.workspace }}/2023_20451427/Worksheet7/Qt_VTK/html

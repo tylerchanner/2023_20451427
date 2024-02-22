@@ -35,4 +35,4 @@ jobs:
         # The branch the action should deploy to.
         branch: gh-pages
         # The folder the action should deploy.
-        folder: ${{ github.workspace }}Worksheet7/Qt_VTK/html
+        folder: ${{ github.workspace }}/Worksheet7/Qt_VTK/html

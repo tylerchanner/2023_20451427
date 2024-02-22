@@ -13,10 +13,10 @@
  */
 int main(int argc, char* argv[])
 {
-    QApplication a(argc, argv); // Create the QApplication instance.
+	QApplication a(argc, argv); // Create the QApplication instance.
 
-    MainWindow w; // Create the main window.
-    w.show(); // Show the main window.
+	MainWindow w; // Create the main window.
+	w.show(); // Show the main window.
 
-    return a.exec(); // Enter the main event loop and wait until exit() is called.
+	return a.exec(); // Enter the main event loop and wait until exit() is called.
 }

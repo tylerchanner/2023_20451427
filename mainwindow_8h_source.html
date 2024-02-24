@@ -72,73 +72,81 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ModelPartList_8h.html">ModelPartList.h</a>&quot;</span> </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ModelPart_8h.html">ModelPart.h</a>&quot;</span> </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;optiondialog.h&quot;</span> </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;vtkSmartPointer.h&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vtkRenderer.h&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vtkGenericOpenGLRenderWindow.h&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;newgroupdialog.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;optiondialog.h&quot;</span> </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vtkSmartPointer.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vtkRenderer.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;vtkGenericOpenGLRenderWindow.h&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;QT_BEGIN_NAMESPACE</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>Ui { <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>; }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;QT_END_NAMESPACE</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>Ui {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classMainWindow.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a> : <span class="keyword">public</span> QMainWindow</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">updateRender</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">updateRenderFromTree</a>(<span class="keyword">const</span> QModelIndex&amp; index);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;QT_BEGIN_NAMESPACE</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>Ui { <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;QT_END_NAMESPACE</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>Ui {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classMainWindow.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a> : <span class="keyword">public</span> QMainWindow</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">updateRender</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">updateRenderFromTree</a>(<span class="keyword">const</span> QModelIndex&amp; index);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a>();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;signals:</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">   67</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">statusUpdateMessage</a>(<span class="keyword">const</span> QString&amp; message, <span class="keywordtype">int</span> timeout);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a930de12c8da1bda6dad9c1548ecb9375">handleButton1</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#accf7f1ca023168f0c31d2f9580e8acab">handleButton2</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">handleTreeClicked</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">on_actionOpen_File_triggered</a>();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">on_actionItemOptions_triggered</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;signals:</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">   68</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">statusUpdateMessage</a>(<span class="keyword">const</span> QString&amp; message, <span class="keywordtype">int</span> timeout);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a930de12c8da1bda6dad9c1548ecb9375">handleButton1</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#accf7f1ca023168f0c31d2f9580e8acab">handleButton2</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">handleTreeClicked</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">on_actionOpen_File_triggered</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">on_actionItemOptions_triggered</a>();</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    Ui::MainWindow* ui;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classModelPartList.html">ModelPartList</a>* partList; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    vtkSmartPointer&lt;vtkRenderer&gt; renderer; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    vtkSmartPointer&lt;vtkGenericOpenGLRenderWindow&gt; renderWindow; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MAINWINDOW_H</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> on_actionNewGroup_triggered();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    Ui::MainWindow* ui;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classModelPartList.html">ModelPartList</a>* partList; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    vtkSmartPointer&lt;vtkRenderer&gt; renderer; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    vtkSmartPointer&lt;vtkGenericOpenGLRenderWindow&gt; renderWindow; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    QAction* actionNewGroup; <span class="comment">// Action to create a new group</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classNewGroupDialog.html">NewGroupDialog</a>* newGroupDialog; <span class="comment">// Pointer to the NewGroupDialog</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    QAction* actionDeleteGroup;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MAINWINDOW_H</span></div>
 <div class="ttc" id="aModelPartList_8h_html"><div class="ttname"><a href="ModelPartList_8h.html">ModelPartList.h</a></div></div>
 <div class="ttc" id="aModelPart_8h_html"><div class="ttname"><a href="ModelPart_8h.html">ModelPart.h</a></div></div>
-<div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdoc">The MainWindow class manages the main window and its UI components.</div><div class="ttdef"><b>Definition:</b> mainwindow.h:42</div></div>
-<div class="ttc" id="aclassMainWindow_html_a143bb60757a3e3f88e208eedb2af7539"><div class="ttname"><a href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">MainWindow::handleTreeClicked</a></div><div class="ttdeci">void handleTreeClicked()</div><div class="ttdoc">Handles clicks on the tree view, displaying the selected item's name.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:135</div></div>
-<div class="ttc" id="aclassMainWindow_html_a3a4866823ec0a9148c03ade962e65cf3"><div class="ttname"><a href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">MainWindow::on_actionOpen_File_triggered</a></div><div class="ttdeci">void on_actionOpen_File_triggered()</div><div class="ttdoc">Slot triggered by the action to open and load an STL file. It allows users to select an STL file to l...</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:232</div></div>
-<div class="ttc" id="aclassMainWindow_html_a3efc38e6be895f53a3f973906e4174b8"><div class="ttname"><a href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">MainWindow::updateRenderFromTree</a></div><div class="ttdeci">void updateRenderFromTree(const QModelIndex &amp;index)</div><div class="ttdoc">Recursively adds actors to the renderer starting from the provided tree index.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:204</div></div>
+<div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdoc">The MainWindow class manages the main window and its UI components.</div><div class="ttdef"><b>Definition:</b> mainwindow.h:43</div></div>
+<div class="ttc" id="aclassMainWindow_html_a143bb60757a3e3f88e208eedb2af7539"><div class="ttname"><a href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">MainWindow::handleTreeClicked</a></div><div class="ttdeci">void handleTreeClicked()</div><div class="ttdoc">Handles clicks on the tree view, displaying the selected item's name.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:100</div></div>
+<div class="ttc" id="aclassMainWindow_html_a3a4866823ec0a9148c03ade962e65cf3"><div class="ttname"><a href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">MainWindow::on_actionOpen_File_triggered</a></div><div class="ttdeci">void on_actionOpen_File_triggered()</div><div class="ttdoc">Slot triggered by the action to open and load an STL file. It allows users to select an STL file to l...</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:207</div></div>
+<div class="ttc" id="aclassMainWindow_html_a3efc38e6be895f53a3f973906e4174b8"><div class="ttname"><a href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">MainWindow::updateRenderFromTree</a></div><div class="ttdeci">void updateRenderFromTree(const QModelIndex &amp;index)</div><div class="ttdoc">Recursively adds actors to the renderer starting from the provided tree index.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:179</div></div>
 <div class="ttc" id="aclassMainWindow_html_a86443ea744fda3e9bad328c2fd1c3d6b"><div class="ttname"><a href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">MainWindow::statusUpdateMessage</a></div><div class="ttdeci">void statusUpdateMessage(const QString &amp;message, int timeout)</div><div class="ttdoc">Signal to update the status bar message.</div></div>
-<div class="ttc" id="aclassMainWindow_html_a930de12c8da1bda6dad9c1548ecb9375"><div class="ttname"><a href="classMainWindow.html#a930de12c8da1bda6dad9c1548ecb9375">MainWindow::handleButton1</a></div><div class="ttdeci">void handleButton1()</div><div class="ttdoc">Handles the first button click.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:274</div></div>
-<div class="ttc" id="aclassMainWindow_html_a996c5a2b6f77944776856f08ec30858d"><div class="ttname"><a href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Constructs a MainWindow object.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:31</div></div>
-<div class="ttc" id="aclassMainWindow_html_aa2a5945f9c4bf90022f0a7ad3db34c49"><div class="ttname"><a href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">MainWindow::updateRender</a></div><div class="ttdeci">void updateRender()</div><div class="ttdoc">Updates the rendering of the model based on the current tree structure.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:191</div></div>
-<div class="ttc" id="aclassMainWindow_html_aa3e86f798258224dddea4be926bc879b"><div class="ttname"><a href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">MainWindow::on_actionItemOptions_triggered</a></div><div class="ttdeci">void on_actionItemOptions_triggered()</div><div class="ttdoc">Opens a dialog for editing properties of the selected item.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:151</div></div>
-<div class="ttc" id="aclassMainWindow_html_accf7f1ca023168f0c31d2f9580e8acab"><div class="ttname"><a href="classMainWindow.html#accf7f1ca023168f0c31d2f9580e8acab">MainWindow::handleButton2</a></div><div class="ttdeci">void handleButton2()</div><div class="ttdoc">Handles the second button click.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:284</div></div>
-<div class="ttc" id="aclassMainWindow_html_ae98d00a93bc118200eeef9f9bba1dba7"><div class="ttname"><a href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdoc">Destroys the MainWindow object.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:263</div></div>
+<div class="ttc" id="aclassMainWindow_html_a930de12c8da1bda6dad9c1548ecb9375"><div class="ttname"><a href="classMainWindow.html#a930de12c8da1bda6dad9c1548ecb9375">MainWindow::handleButton1</a></div><div class="ttdeci">void handleButton1()</div><div class="ttdoc">Handles the first button click.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:250</div></div>
+<div class="ttc" id="aclassMainWindow_html_a996c5a2b6f77944776856f08ec30858d"><div class="ttname"><a href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Constructs a MainWindow object.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:32</div></div>
+<div class="ttc" id="aclassMainWindow_html_aa2a5945f9c4bf90022f0a7ad3db34c49"><div class="ttname"><a href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">MainWindow::updateRender</a></div><div class="ttdeci">void updateRender()</div><div class="ttdoc">Updates the rendering of the model based on the current tree structure.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:166</div></div>
+<div class="ttc" id="aclassMainWindow_html_aa3e86f798258224dddea4be926bc879b"><div class="ttname"><a href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">MainWindow::on_actionItemOptions_triggered</a></div><div class="ttdeci">void on_actionItemOptions_triggered()</div><div class="ttdoc">Opens a dialog for editing properties of the selected item.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:116</div></div>
+<div class="ttc" id="aclassMainWindow_html_accf7f1ca023168f0c31d2f9580e8acab"><div class="ttname"><a href="classMainWindow.html#accf7f1ca023168f0c31d2f9580e8acab">MainWindow::handleButton2</a></div><div class="ttdeci">void handleButton2()</div><div class="ttdoc">Handles the second button click.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:260</div></div>
+<div class="ttc" id="aclassMainWindow_html_ae98d00a93bc118200eeef9f9bba1dba7"><div class="ttname"><a href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdoc">Destroys the MainWindow object.</div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:238</div></div>
 <div class="ttc" id="aclassModelPartList_html"><div class="ttname"><a href="classModelPartList.html">ModelPartList</a></div><div class="ttdef"><b>Definition:</b> ModelPartList.h:24</div></div>
+<div class="ttc" id="aclassNewGroupDialog_html"><div class="ttname"><a href="classNewGroupDialog.html">NewGroupDialog</a></div><div class="ttdef"><b>Definition:</b> newgroupdialog.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

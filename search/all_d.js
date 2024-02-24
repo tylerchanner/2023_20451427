@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['updaterender_43',['updateRender',['../classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49',1,'MainWindow']]],
-  ['updaterenderfromtree_44',['updateRenderFromTree',['../classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8',1,'MainWindow']]]
+  ['set_37',['set',['../classModelPart.html#a3232893d070ddcec42631bf5b043add8',1,'ModelPart']]],
+  ['setcolor_38',['setColor',['../classOptionDialog.html#add1ab3451fa5aec86c8b7ed6c5fffec1',1,'OptionDialog']]],
+  ['setcolour_39',['setColour',['../classModelPart.html#abbaaa19d7d24b9f1138072d594bd838c',1,'ModelPart']]],
+  ['setname_40',['setName',['../classOptionDialog.html#ab7580ad4f76685e639e61cadd3ac86fd',1,'OptionDialog']]],
+  ['setvisibility_41',['setVisibility',['../classOptionDialog.html#ad1ba26f2b87cea538abfb973e5dc6ffd',1,'OptionDialog']]],
+  ['setvisible_42',['setVisible',['../classModelPart.html#a96c8cca32bd530bf28c6ab6a1ccc2353',1,'ModelPart']]],
+  ['statusupdatemessage_43',['statusUpdateMessage',['../classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b',1,'MainWindow']]]
 ];

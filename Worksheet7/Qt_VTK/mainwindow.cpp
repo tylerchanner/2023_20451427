@@ -21,6 +21,8 @@
 #include <vtkProperty.h>
 #include <vtkCamera.h>
 #include <vtkNamedColors.h>
+#include <QDebug>
+
 
 
  /**
@@ -49,15 +51,44 @@ MainWindow::MainWindow(QWidget* parent) :
 	// Manually create a model tree
 	ModelPart* rootItem = this->partList->getRootItem();
 
-	QString name = QString("Model");
-	QString visible("true");
-	QString colour("255,255,255");
+	//QString name = QString("Model");
+	//QString visible("true");
+	//QString colour("255,255,255");
 
-	// Create child item
-	ModelPart* childItem = new ModelPart({ name, visible, colour });
+	//// Create child item
+	//ModelPart* childItem = new ModelPart({ name, visible, colour });
 
-	// Append to tree top-level
-	rootItem->appendChild(childItem);
+	//// Append to tree top-level
+	//rootItem->appendChild(childItem);
+
+
+		// Add 3 top level items
+	for (int i = 0; i < 3; i++) {
+		QString name = QString("TopLevel %1").arg(i);
+		QString visible("true");
+		QString colour("255,255,255");
+
+		// Create child item
+		ModelPart* childItem = new ModelPart({ name, visible, colour });
+
+		// Append to tree top-level
+		rootItem->appendChild(childItem);
+
+		// Add 5 sub-items
+		for (int j = 0; j < 5; j++) {
+			QString name = QString("Item %1,%2").arg(i).arg(j);
+			QString visible("true");
+			QString colour("255,255,255");
+
+			ModelPart* childChildItem = new ModelPart({ name, visible, colour });
+
+			// Append to parent
+			childItem->appendChild(childChildItem);
+		}
+	}
+
+
+
 
 	// Connect button signals to slots
 	connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton1);
@@ -115,48 +146,75 @@ void MainWindow::handleTreeClicked() {
  */
 void MainWindow::on_actionItemOptions_triggered() {
 	QModelIndex index = ui->treeView->currentIndex();
-	if (!index.isValid())
+	if (!index.isValid()) {
 		return;
+	}
 
 	ModelPart* selectedPart = static_cast<ModelPart*>(index.internalPointer());
-	if (!selectedPart)
+	if (!selectedPart) {
 		return;
+	}
 
-	// Open the dialog to edit the properties
 	OptionDialog dialog(this);
-	// Set the existing values to the dialog controls
 	dialog.setName(selectedPart->data(0).toString());
 	dialog.setColor(QColor(selectedPart->getColourR(), selectedPart->getColourG(), selectedPart->getColourB()));
 	dialog.setVisibility(selectedPart->visible());
 
 	if (dialog.exec() == QDialog::Accepted) {
-		// Apply the changes
 		QColor color = dialog.getColor();
-		QString colorString = QString::number(color.red()) + "," + QString::number(color.green()) + "," + QString::number(color.blue());
 
-		selectedPart->set(0, QVariant(dialog.getName())); // Set the name
-		selectedPart->set(1, QVariant(dialog.getVisibility() ? "true" : "false")); // Set the visibility
-		selectedPart->set(2, QVariant(colorString)); // Set the color string
+		// Apply name, visibility, and color to the selected part
+		applyPropertiesToPart(selectedPart, dialog.getName(), dialog.getVisibility(), color, true);
 
-		selectedPart->setColour(color.red(), color.green(), color.blue());
-		selectedPart->setVisible(dialog.getVisibility());
+		// Recursively apply visibility and color to all children without changing their names
+		updateChildrenProperties(selectedPart, dialog.getVisibility(), color);
 
-		// Assuming ModelPart has a method to get its VTK actor
-		vtkSmartPointer<vtkActor> actor = selectedPart->getActor();
-		if (actor) {
-			// Update actor properties based on dialog changes
-			actor->SetVisibility(dialog.getVisibility()); // Corrected line
-			actor->GetProperty()->SetDiffuseColor(color.red() / 255.0, color.green() / 255.0, color.blue() / 255.0);
-
-
-			// If you have a method to refresh or update the VTK display, call it here
-			updateRender(); // This is a placeholder for your actual method to refresh the VTK viewer
-		}
-
-		// Emit a message or update the view as needed
-		emit statusUpdateMessage("Item updated.", 2000);
+		emit statusUpdateMessage("Item and its children updated.", 2000);
 	}
 }
+
+
+void MainWindow::applyPropertiesToPart(ModelPart* part, const QString& name, bool visibility, const QColor& color, bool updateName) {
+	if (!part) return;
+
+	if (updateName) {
+		part->set(0, QVariant(name)); // Update name only if updateName is true
+	}
+	part->set(1, QVariant(visibility ? "true" : "false"));
+	part->set(2, QVariant(QString::number(color.red()) + "," + QString::number(color.green()) + "," + QString::number(color.blue())));
+
+	part->setColour(color.red(), color.green(), color.blue());
+	part->setVisible(visibility);
+
+
+
+	QAbstractItemModel* model = ui->treeView->model();
+	QModelIndex startIndex = model->index(part->row(), 0);
+	QModelIndex endIndex = model->index(part->row(), model->columnCount());
+	model->dataChanged(startIndex, endIndex);
+	ui->treeView->update(startIndex);
+
+	vtkSmartPointer<vtkActor> actor = part->getActor();
+	if (actor) {
+		actor->SetVisibility(visibility);
+		actor->GetProperty()->SetDiffuseColor(color.red() / 255.0, color.green() / 255.0, color.blue() / 255.0);
+		updateRender();
+	}
+}
+
+
+
+
+void MainWindow::updateChildrenProperties(ModelPart* part, bool visibility, const QColor& color) {
+	for (int i = 0; i < part->childCount(); ++i) {
+		ModelPart* child = part->child(i);
+		// Apply visibility and color without changing the name
+		applyPropertiesToPart(child, QString(), visibility, color, false); // false to not update name
+		updateChildrenProperties(child, visibility, color); // Recursive call
+	}
+}
+
+
 
 
 
@@ -165,13 +223,23 @@ void MainWindow::on_actionItemOptions_triggered() {
  */
 void MainWindow::updateRender() {
 	renderer->RemoveAllViewProps(); // Remove existing actors
-	updateRenderFromTree(partList->index(0, 0, QModelIndex())); // Start with the root
+
+	// Get the count of top-level items in the tree
+	int topLevelItemCount = partList->rowCount(QModelIndex());
+
+	// Iterate through all top-level items
+	for (int i = 0; i < topLevelItemCount; ++i) {
+		QModelIndex topLevelIndex = partList->index(i, 0, QModelIndex());
+		updateRenderFromTree(topLevelIndex); // Update render starting from each top-level item
+	}
+
 	renderer->ResetCamera();
 	renderer->GetActiveCamera()->Azimuth(30);
 	renderer->GetActiveCamera()->Elevation(30);
 	renderer->ResetCameraClippingRange();
 	renderer->Render(); // Render the scene
 }
+
 /**
  * @brief Recursively adds actors to the renderer starting from the provided tree index.
  * @param index The starting point in the model tree for adding actors to the render.
@@ -197,8 +265,6 @@ void MainWindow::updateRenderFromTree(const QModelIndex& index) {
 	}
 }
 
-
-
 /**
  * @brief Slot triggered by the action to open and load an STL file.
  * It allows users to select an STL file to load, creating and appending a new ModelPart
@@ -212,7 +278,9 @@ void MainWindow::on_actionOpen_File_triggered() {
 			QString justFileName = fileInfo.fileName();
 
 			QList<QVariant> data;
-			data << QVariant(justFileName) << QVariant("true");
+			data << QVariant(justFileName) // Name
+				<< QVariant("true") // Visibility
+				<< QVariant("255,255,255"); // Color in R,G,B format
 
 			auto* newPart = new ModelPart(data);
 			QModelIndex currentIndex = ui->treeView->currentIndex();
@@ -220,12 +288,24 @@ void MainWindow::on_actionOpen_File_triggered() {
 			parentPart->appendChild(newPart);
 			newPart->loadSTL(fileName);
 
+			// Setting the visibility and color
+			QColor whiteColor(255, 255, 255);
+			newPart->setColour(whiteColor.red(), whiteColor.green(), whiteColor.blue());
+			newPart->setVisible(true);
+
+			// Notifying the model about the data change
+			QAbstractItemModel* model = ui->treeView->model();
+			QModelIndex startIndex = model->index(newPart->row(), 0);
+			QModelIndex endIndex = model->index(newPart->row(), model->columnCount() - 1);
+			model->dataChanged(startIndex, endIndex);
+
 			ui->treeView->model()->layoutChanged();
 			updateRender();
 			emit statusUpdateMessage(QString("Loaded STL file: %1").arg(fileName), 5000);
 		}
 	}
 }
+
 
 
 
@@ -282,19 +362,21 @@ void MainWindow::handleButton2() {
 	}
 }
 
-// Slot implementation for creating a new group
 void MainWindow::on_actionNewGroup_triggered()
 {
 	newGroupDialog = new NewGroupDialog(this);
-	// Connect a lambda to handle the dialog acceptance
-	connect(newGroupDialog, &NewGroupDialog::accepted, [this]() {
+
+	QModelIndex index = ui->treeView->currentIndex();
+	// Whether or not the index is valid, we show the dialog only once
+	// So, we connect the dialog acceptance to a single logic flow that considers both cases
+	connect(newGroupDialog, &NewGroupDialog::accepted, [this, index]() { // Capture index by value
 		QString groupName = newGroupDialog->getGroupName(); // Obtain the group name from the dialog
-		ModelPart* rootItem = this->partList->getRootItem();
+		ModelPart* parentPart = index.isValid() ? static_cast<ModelPart*>(index.internalPointer()) : this->partList->getRootItem();
 		ModelPart* newGroup = new ModelPart({ groupName, "true", "255,255,255" }); // Create a new group
-		rootItem->appendChild(newGroup); // Add the new group to the tree
+		parentPart->appendChild(newGroup); // Add the new group under the selected part or root
 		ui->treeView->model()->layoutChanged();
 		});
-	newGroupDialog->show(); // Show the dialog
 
+	newGroupDialog->show(); // Show the dialog only once after setting up the connection
 }
 

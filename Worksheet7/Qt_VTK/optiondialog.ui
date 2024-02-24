@@ -70,6 +70,9 @@
    <property name="text">
     <string>isVisible?</string>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QScrollBar" name="horizontalScrollBarRed">
    <property name="geometry">
@@ -185,43 +188,34 @@
     <string>Blue</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>250</x>
      <y>80</y>
-     <width>49</width>
+     <width>31</width>
      <height>16</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
-   </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>250</x>
      <y>110</y>
-     <width>49</width>
+     <width>31</width>
      <height>16</height>
     </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>250</x>
      <y>140</y>
-     <width>49</width>
+     <width>31</width>
      <height>16</height>
     </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
  </widget>

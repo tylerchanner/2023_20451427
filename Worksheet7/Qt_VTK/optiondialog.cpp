@@ -19,16 +19,39 @@ OptionDialog::OptionDialog(QWidget* parent) :
 {
     ui->setupUi(this);
 
+    // Set the checkbox to be checked by default
+    ui->checkBox->setChecked(true);
+
+    // Update labels and line edits when scroll bars change
     connect(ui->horizontalScrollBarRed, &QScrollBar::valueChanged, this, [this](int value) {
-        ui->label_2->setText(QString::number(value));
+        ui->lineEdit->setText(QString::number(value)); // Update for red
         });
     connect(ui->horizontalScrollBarGreen, &QScrollBar::valueChanged, this, [this](int value) {
-        ui->label_6->setText(QString::number(value));
+        ui->lineEdit_2->setText(QString::number(value)); // Update for green
         });
     connect(ui->horizontalScrollBarBlue, &QScrollBar::valueChanged, this, [this](int value) {
-        ui->label_7->setText(QString::number(value));
+        ui->lineEdit_3->setText(QString::number(value)); // Update for blue
+        });
+
+    // Update scroll bars when line edits change
+    connect(ui->lineEdit, &QLineEdit::textChanged, this, [this](const QString& text) {
+        bool ok;
+        int value = text.toInt(&ok);
+        if (ok) ui->horizontalScrollBarRed->setValue(value);
+        });
+    connect(ui->lineEdit_2, &QLineEdit::textChanged, this, [this](const QString& text) {
+        bool ok;
+        int value = text.toInt(&ok);
+        if (ok) ui->horizontalScrollBarGreen->setValue(value);
+        });
+    connect(ui->lineEdit_3, &QLineEdit::textChanged, this, [this](const QString& text) {
+        bool ok;
+        int value = text.toInt(&ok);
+        if (ok) ui->horizontalScrollBarBlue->setValue(value);
         });
 }
+
+
 
 /**
  * @brief Destroys the OptionDialog object.

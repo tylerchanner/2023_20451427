@@ -46,6 +46,8 @@ class MainWindow : public QMainWindow
 public:
 	void updateRender();
 	void updateRenderFromTree(const QModelIndex& index);
+	void applyPropertiesToPart(ModelPart* part, const QString& name, bool visibility, const QColor& color, bool updateName = true);
+	void updateChildrenProperties(ModelPart* part, bool visibility, const QColor& color);
 
 	/**
 	* @brief Constructs a MainWindow object.

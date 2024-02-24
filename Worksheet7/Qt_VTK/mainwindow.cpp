@@ -12,6 +12,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "optiondialog.h"
+#include "newgroupdialog.h"
 #include <vtkGenericOpenGLRenderWindow.h>
 #include <vtkRenderer.h>
 #include <vtkCylinderSource.h>
@@ -48,30 +49,15 @@ MainWindow::MainWindow(QWidget* parent) :
 	// Manually create a model tree
 	ModelPart* rootItem = this->partList->getRootItem();
 
-	// Add 3 top level items
-	for (int i = 0; i < 3; i++) {
-		QString name = QString("TopLevel %1").arg(i);
-		QString visible("true");
-		QString colour("255,255,255");
+	QString name = QString("Model");
+	QString visible("true");
+	QString colour("255,255,255");
 
-		// Create child item
-		ModelPart* childItem = new ModelPart({ name, visible, colour });
+	// Create child item
+	ModelPart* childItem = new ModelPart({ name, visible, colour });
 
-		// Append to tree top-level
-		rootItem->appendChild(childItem);
-
-		// Add 5 sub-items
-		for (int j = 0; j < 5; j++) {
-			QString name = QString("Item %1,%2").arg(i).arg(j);
-			QString visible("true");
-			QString colour("255,255,255");
-
-			ModelPart* childChildItem = new ModelPart({ name, visible, colour });
-
-			// Append to parent
-			childItem->appendChild(childChildItem);
-		}
-	}
+	// Append to tree top-level
+	rootItem->appendChild(childItem);
 
 	// Connect button signals to slots
 	connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton1);
@@ -87,14 +73,15 @@ MainWindow::MainWindow(QWidget* parent) :
 	connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
 
 	// Create an action for the context menu
-	ui->treeView->setContextMenuPolicy(Qt::ActionsContextMenu);
-
-	// Create an action for the context menu
 	QAction* actionItemOptions = new QAction(tr("Item Options"), this);
 	connect(actionItemOptions, &QAction::triggered, this, &MainWindow::on_actionItemOptions_triggered);
 
 	// Add the action to the tree view's context menu
 	ui->treeView->addAction(actionItemOptions);
+
+	actionNewGroup = new QAction(tr("New Group"), this);
+	ui->treeView->addAction(actionNewGroup); // Add the action to the tree view's context menu
+	connect(actionNewGroup, &QAction::triggered, this, &MainWindow::on_actionNewGroup_triggered);
 
 
 	// Set up the render window
@@ -105,29 +92,7 @@ MainWindow::MainWindow(QWidget* parent) :
 	renderer = vtkSmartPointer<vtkRenderer>::New();
 	renderWindow->AddRenderer(renderer);
 
-
-	// Create the cylinder
-	vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
-	cylinder->SetResolution(100);
-
-	vtkSmartPointer<vtkPolyDataMapper> cylinderMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-	cylinderMapper->SetInputConnection(cylinder->GetOutputPort());
-
-	vtkSmartPointer<vtkActor> cylinderActor = vtkSmartPointer<vtkActor>::New();
-	cylinderActor->SetMapper(cylinderMapper);
-	cylinderActor->GetProperty()->SetColor(1.0, 5.0, 0.35);
-	cylinderActor->RotateX(30.0);
-	cylinderActor->RotateY(-45.0);
-
-	renderer->AddActor(cylinderActor);
-	renderer->ResetCamera();
-	renderer->GetActiveCamera()->Azimuth(30);
-	renderer->GetActiveCamera()->Elevation(30);
-	renderer->ResetCameraClippingRange();
-
 }
-// Repeat for green and blue sliders
-
 
 /**
  * @brief Handles clicks on the tree view, displaying the selected item's name.
@@ -173,16 +138,26 @@ void MainWindow::on_actionItemOptions_triggered() {
 		selectedPart->set(1, QVariant(dialog.getVisibility() ? "true" : "false")); // Set the visibility
 		selectedPart->set(2, QVariant(colorString)); // Set the color string
 
-
 		selectedPart->setColour(color.red(), color.green(), color.blue());
 		selectedPart->setVisible(dialog.getVisibility());
 
+		// Assuming ModelPart has a method to get its VTK actor
+		vtkSmartPointer<vtkActor> actor = selectedPart->getActor();
+		if (actor) {
+			// Update actor properties based on dialog changes
+			actor->SetVisibility(dialog.getVisibility()); // Corrected line
+			actor->GetProperty()->SetDiffuseColor(color.red() / 255.0, color.green() / 255.0, color.blue() / 255.0);
 
+
+			// If you have a method to refresh or update the VTK display, call it here
+			updateRender(); // This is a placeholder for your actual method to refresh the VTK viewer
+		}
 
 		// Emit a message or update the view as needed
 		emit statusUpdateMessage("Item updated.", 2000);
 	}
 }
+
 
 
 /**
@@ -208,8 +183,8 @@ void MainWindow::updateRenderFromTree(const QModelIndex& index) {
 		if (selectedPart) {
 			vtkActor* actor = selectedPart->getActor(); // Assuming getActor returns vtkActor*
 			if (actor) {
-				actor->GetProperty()->SetDiffuseColor(
-					colors->GetColor3d("red").GetData());
+				//actor->GetProperty()->SetDiffuseColor(
+					//colors->GetColor3d("red").GetData());
 				renderer->AddActor(actor);
 			}
 		}
@@ -230,25 +205,25 @@ void MainWindow::updateRenderFromTree(const QModelIndex& index) {
  * based on the file, and updates the rendering accordingly.
  */
 void MainWindow::on_actionOpen_File_triggered() {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath(), tr("STL Files (*.stl);;Text Files (*.txt)"));
-	if (!fileName.isEmpty()) {
-		QFileInfo fileInfo(fileName);
-		QString justFileName = fileInfo.fileName();
+	QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Files"), QDir::homePath(), tr("STL Files (*.stl);;Text Files (*.txt)"));
+	for (const QString& fileName : fileNames) {
+		if (!fileName.isEmpty()) {
+			QFileInfo fileInfo(fileName);
+			QString justFileName = fileInfo.fileName();
 
-		// Prepare data for ModelPart construction
-		QList<QVariant> data;
-		data << QVariant(justFileName) << QVariant("true"); // Adjust based on actual ModelPart constructor
+			QList<QVariant> data;
+			data << QVariant(justFileName) << QVariant("true");
 
-		// Create a new ModelPart instance with the prepared data
-		auto* newPart = new ModelPart(data);
-		QModelIndex currentIndex = ui->treeView->currentIndex();
-		ModelPart* parentPart = currentIndex.isValid() ? static_cast<ModelPart*>(currentIndex.internalPointer()) : partList->getRootItem();
-		parentPart->appendChild(newPart); // Simplify appendChild to directly add to parent
-		newPart->loadSTL(fileName);
+			auto* newPart = new ModelPart(data);
+			QModelIndex currentIndex = ui->treeView->currentIndex();
+			ModelPart* parentPart = currentIndex.isValid() ? static_cast<ModelPart*>(currentIndex.internalPointer()) : partList->getRootItem();
+			parentPart->appendChild(newPart);
+			newPart->loadSTL(fileName);
 
-		ui->treeView->model()->layoutChanged(); // Properly signal the tree view to update
-		updateRender(); // Update rendering from the root
-		emit statusUpdateMessage(QString("Loaded STL file: %1").arg(fileName), 5000);
+			ui->treeView->model()->layoutChanged();
+			updateRender();
+			emit statusUpdateMessage(QString("Loaded STL file: %1").arg(fileName), 5000);
+		}
 	}
 }
 
@@ -264,6 +239,7 @@ MainWindow::~MainWindow()
 {
 	delete ui;
 	delete partList; // Clean up partList
+
 }
 
 /**
@@ -305,3 +281,20 @@ void MainWindow::handleButton2() {
 		emit statusUpdateMessage("Dialog rejected", 0);
 	}
 }
+
+// Slot implementation for creating a new group
+void MainWindow::on_actionNewGroup_triggered()
+{
+	newGroupDialog = new NewGroupDialog(this);
+	// Connect a lambda to handle the dialog acceptance
+	connect(newGroupDialog, &NewGroupDialog::accepted, [this]() {
+		QString groupName = newGroupDialog->getGroupName(); // Obtain the group name from the dialog
+		ModelPart* rootItem = this->partList->getRootItem();
+		ModelPart* newGroup = new ModelPart({ groupName, "true", "255,255,255" }); // Create a new group
+		rootItem->appendChild(newGroup); // Add the new group to the tree
+		ui->treeView->model()->layoutChanged();
+		});
+	newGroupDialog->show(); // Show the dialog
+
+}
+

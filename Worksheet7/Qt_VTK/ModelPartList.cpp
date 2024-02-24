@@ -9,6 +9,8 @@
 
 #include "ModelPartList.h"
 #include "ModelPart.h"
+#include <QStandardItem>
+
 
 ModelPartList::ModelPartList(const QString& data, QObject* parent) : QAbstractItemModel(parent) {
     /* Have option to specify number of visible properties for each item in tree - the root item
@@ -144,4 +146,8 @@ QModelIndex ModelPartList::appendChild(QModelIndex& parent, const QList<QVariant
 
     return child;
 }
+
+
+
+
 

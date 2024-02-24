@@ -15,6 +15,7 @@
 #include <QMainWindow>
 #include "ModelPartList.h" 
 #include "ModelPart.h" 
+#include "newgroupdialog.h"
 #include <QString>
 #include "optiondialog.h" 
 #include <vtkSmartPointer.h>
@@ -83,12 +84,18 @@ public slots:
 
 	void on_actionItemOptions_triggered();
 
+	void on_actionNewGroup_triggered();
+
+
 
 private:
 	Ui::MainWindow* ui;
 	ModelPartList* partList; ///< Pointer to the model parts list
 	vtkSmartPointer<vtkRenderer> renderer; ///< Renderer for the VTK view
 	vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow; ///< Window for rendering
+	QAction* actionNewGroup; // Action to create a new group
+	NewGroupDialog* newGroupDialog; // Pointer to the NewGroupDialog
+	QAction* actionDeleteGroup;
 
 };
 

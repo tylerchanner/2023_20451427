@@ -94,6 +94,7 @@ public:
     /**
       */
     QModelIndex appendChild(QModelIndex& parent, const QList<QVariant>& data);
+    void removeItem(const QModelIndex& index);
 
 
 

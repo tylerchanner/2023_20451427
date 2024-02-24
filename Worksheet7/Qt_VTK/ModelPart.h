@@ -13,7 +13,7 @@
 #include <QString>
 #include <QList>
 #include <QVariant>
-#include <QColor.h>
+#include <QColor>
 
 #include <vtkSmartPointer.h>
 #include <vtkMapper.h>

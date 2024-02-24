@@ -31,7 +31,11 @@ set(PROJECT_SOURCES
         mainwindow.ui
         icons.qrc
         optiondialog.h
+	optiondialog.ui
         optiondialog.cpp
+	newgroupdialog.h
+	newgroupdialog.cpp
+	newgroupdialog.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

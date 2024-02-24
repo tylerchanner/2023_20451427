@@ -19,10 +19,6 @@
 #include <vtkSTLReader.h>
 
 
-
-  /* Commented out for now, will be uncommented later when you have
-   * installed the VTK library
-   */
 #include <vtkSmartPointer.h>
 #include <vtkDataSetMapper.h>
 

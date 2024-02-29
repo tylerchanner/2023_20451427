@@ -51,7 +51,8 @@ public:
     void connectSignals();
     void addModelPartToTree();
     void createAction(QAction** action, const QString& text, void (MainWindow::* slot)());
-
+    QModelIndex searchInTreeView(const QString& searchString, const QModelIndex& parentIndex);
+    void selectItemInTreeView(const QModelIndex& index);
 signals:
     void statusUpdateMessage(const QString& message, int timeout);
 
@@ -63,6 +64,8 @@ public slots:
     void on_actionDeleteFile_triggered();
     void createModelPartFromFile(const QString& fileName);
     void removeActorsRecursively(ModelPart* part);
+    void on_actionSearchItem_triggered();
+
 
 private:
     Ui::MainWindow* ui; ///< User interface for the main window.
@@ -74,6 +77,7 @@ private:
     QAction* actionDeleteGroup; ///< Action to delete a selected group.
     QAction* actionItemOptions; ///< Action to modify item options.
     QAction* actionDeleteItem; ///< Action to delete a selected item.
+    QAction* actionSearch_Items;
 };
 
 #endif // MAINWINDOW_H

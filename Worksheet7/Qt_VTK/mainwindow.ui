@@ -84,6 +84,7 @@
    <addaction name="actionItem_Options"/>
    <addaction name="actionNew_Group"/>
    <addaction name="actionDelete_File"/>
+   <addaction name="actionSearch_Items"/>
   </widget>
   <action name="actionOpen_File">
    <property name="icon">
@@ -131,6 +132,18 @@
    </property>
    <property name="text">
     <string>Delete File</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSearch_Items">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/Downloads/search.png</normaloff>:/Downloads/search.png</iconset>
+   </property>
+   <property name="text">
+    <string>Search Items</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

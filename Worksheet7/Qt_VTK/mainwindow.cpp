@@ -22,6 +22,7 @@
 #include <vtkNamedColors.h>
 #include <QDebug>
 #include <QMessageBox>
+#include <QInputDialog>
 
  /**
   * @brief Constructs the MainWindow object.
@@ -131,6 +132,7 @@ void MainWindow::connectSignals() {
     connect(ui->actionDelete_File, &QAction::triggered, this, &MainWindow::on_actionDeleteFile_triggered);
     connect(ui->actionItem_Options, &QAction::triggered, this, &MainWindow::on_actionItemOptions_triggered);
     connect(ui->actionNew_Group, &QAction::triggered, this, &MainWindow::on_actionNewGroup_triggered);
+    connect(ui->actionSearch_Items, &QAction::triggered, this, &MainWindow::on_actionSearchItem_triggered);
 }
 
 /**
@@ -417,3 +419,47 @@ void MainWindow::removeActorsRecursively(ModelPart* part) {
 
     renderWindow->Render();
 }
+
+
+void MainWindow::on_actionSearchItem_triggered() {
+    bool ok;
+    QString searchTerm = QInputDialog::getText(this, tr("Search in TreeView"),
+        tr("Enter search term:"), QLineEdit::Normal,
+        QString(), &ok);
+    if (ok && !searchTerm.isEmpty()) {
+        QModelIndex searchResult = searchInTreeView(searchTerm, QModelIndex()); // Start from the root
+
+        if (searchResult.isValid()) {
+            selectItemInTreeView(searchResult);
+        }
+        else {
+            QMessageBox::information(this, tr("Search Result"), tr("Item not found."));
+        }
+    }
+}
+
+QModelIndex MainWindow::searchInTreeView(const QString& searchString, const QModelIndex& parentIndex) {
+    for (int r = 0; r < partList->rowCount(parentIndex); ++r) {
+        QModelIndex index = partList->index(r, 0, parentIndex); // Assuming the name is in the first column
+        QString itemText = partList->data(index, Qt::DisplayRole).toString();
+
+        if (itemText.contains(searchString, Qt::CaseInsensitive)) {
+            return index; // Item found
+        }
+
+        // Search in child nodes
+        QModelIndex childResult = searchInTreeView(searchString, index);
+        if (childResult.isValid()) {
+            return childResult; // Item found in children
+        }
+    }
+
+    return QModelIndex(); // Not found
+}
+
+void MainWindow::selectItemInTreeView(const QModelIndex& index) {
+    ui->treeView->setCurrentIndex(index);
+    ui->treeView->scrollTo(index);
+    ui->treeView->selectionModel()->select(index, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+}
+

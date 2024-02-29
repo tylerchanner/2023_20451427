@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['newgroupdialog_54',['NewGroupDialog',['../classNewGroupDialog.html',1,'']]]
+  ['newgroupdialog_74',['NewGroupDialog',['../classNewGroupDialog.html',1,'']]]
 ];

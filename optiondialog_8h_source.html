@@ -66,45 +66,51 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef OPTIONDIALOG_H</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define OPTIONDIALOG_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QColor&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>Ui {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">class </span><a class="code" href="classOptionDialog.html">OptionDialog</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classOptionDialog.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classOptionDialog.html">OptionDialog</a> : <span class="keyword">public</span> QDialog</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classOptionDialog.html#a4540736a5c6e4468dad5165c7aefc8bc">OptionDialog</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classOptionDialog.html#a640a1faddda44f2567cf386de0085ec7">~OptionDialog</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QString <a class="code" href="classOptionDialog.html#ace0af27c027082ead61b1e13dc32730e">getName</a>() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    QColor <a class="code" href="classOptionDialog.html#a9913b04ce34c705c692609ac85260c1d">getColor</a>() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classOptionDialog.html#ad17c49ed397eb57a9487796bbe85ccbb">getVisibility</a>() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionDialog.html#ab7580ad4f76685e639e61cadd3ac86fd">setName</a>(<span class="keyword">const</span> QString&amp; name); </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionDialog.html#add1ab3451fa5aec86c8b7ed6c5fffec1">setColor</a>(<span class="keyword">const</span> QColor&amp; color); </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionDialog.html#ad1ba26f2b87cea538abfb973e5dc6ffd">setVisibility</a>(<span class="keywordtype">bool</span> isVisible); </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Ui::OptionDialog* ui; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// OPTIONDIALOG_H</span></div>
-<div class="ttc" id="aclassOptionDialog_html"><div class="ttname"><a href="classOptionDialog.html">OptionDialog</a></div><div class="ttdoc">Dialog class for editing item options.</div><div class="ttdef"><b>Definition:</b> optiondialog.h:26</div></div>
-<div class="ttc" id="aclassOptionDialog_html_a4540736a5c6e4468dad5165c7aefc8bc"><div class="ttname"><a href="classOptionDialog.html#a4540736a5c6e4468dad5165c7aefc8bc">OptionDialog::OptionDialog</a></div><div class="ttdeci">OptionDialog(QWidget *parent=nullptr)</div><div class="ttdoc">Constructs an OptionDialog object.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:16</div></div>
-<div class="ttc" id="aclassOptionDialog_html_a640a1faddda44f2567cf386de0085ec7"><div class="ttname"><a href="classOptionDialog.html#a640a1faddda44f2567cf386de0085ec7">OptionDialog::~OptionDialog</a></div><div class="ttdeci">~OptionDialog()</div><div class="ttdoc">Destroys the OptionDialog object.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:59</div></div>
-<div class="ttc" id="aclassOptionDialog_html_a9913b04ce34c705c692609ac85260c1d"><div class="ttname"><a href="classOptionDialog.html#a9913b04ce34c705c692609ac85260c1d">OptionDialog::getColor</a></div><div class="ttdeci">QColor getColor() const</div><div class="ttdoc">Retrieves the item's color.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:76</div></div>
-<div class="ttc" id="aclassOptionDialog_html_ab7580ad4f76685e639e61cadd3ac86fd"><div class="ttname"><a href="classOptionDialog.html#ab7580ad4f76685e639e61cadd3ac86fd">OptionDialog::setName</a></div><div class="ttdeci">void setName(const QString &amp;name)</div><div class="ttdoc">Sets the item's name.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:94</div></div>
-<div class="ttc" id="aclassOptionDialog_html_ace0af27c027082ead61b1e13dc32730e"><div class="ttname"><a href="classOptionDialog.html#ace0af27c027082ead61b1e13dc32730e">OptionDialog::getName</a></div><div class="ttdeci">QString getName() const</div><div class="ttdoc">Retrieves the item's name.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:68</div></div>
-<div class="ttc" id="aclassOptionDialog_html_ad17c49ed397eb57a9487796bbe85ccbb"><div class="ttname"><a href="classOptionDialog.html#ad17c49ed397eb57a9487796bbe85ccbb">OptionDialog::getVisibility</a></div><div class="ttdeci">bool getVisibility() const</div><div class="ttdoc">Retrieves the item's visibility state.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:86</div></div>
-<div class="ttc" id="aclassOptionDialog_html_ad1ba26f2b87cea538abfb973e5dc6ffd"><div class="ttname"><a href="classOptionDialog.html#ad1ba26f2b87cea538abfb973e5dc6ffd">OptionDialog::setVisibility</a></div><div class="ttdeci">void setVisibility(bool isVisible)</div><div class="ttdoc">Sets the item's visibility state.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:112</div></div>
-<div class="ttc" id="aclassOptionDialog_html_add1ab3451fa5aec86c8b7ed6c5fffec1"><div class="ttname"><a href="classOptionDialog.html#add1ab3451fa5aec86c8b7ed6c5fffec1">OptionDialog::setColor</a></div><div class="ttdeci">void setColor(const QColor &amp;color)</div><div class="ttdoc">Sets the item's color.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:102</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef OPTIONDIALOG_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define OPTIONDIALOG_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QColor&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>Ui {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">class </span><a class="code" href="classOptionDialog.html">OptionDialog</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classOptionDialog.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classOptionDialog.html">OptionDialog</a> : <span class="keyword">public</span> QDialog</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classOptionDialog.html#a4540736a5c6e4468dad5165c7aefc8bc">OptionDialog</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classOptionDialog.html#a640a1faddda44f2567cf386de0085ec7">~OptionDialog</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    QString <a class="code" href="classOptionDialog.html#ace0af27c027082ead61b1e13dc32730e">getName</a>() <span class="keyword">const</span>; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    QColor <a class="code" href="classOptionDialog.html#a9913b04ce34c705c692609ac85260c1d">getColor</a>() <span class="keyword">const</span>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classOptionDialog.html#ad17c49ed397eb57a9487796bbe85ccbb">getVisibility</a>() <span class="keyword">const</span>; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionDialog.html#ab7580ad4f76685e639e61cadd3ac86fd">setName</a>(<span class="keyword">const</span> QString&amp; name); </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionDialog.html#add1ab3451fa5aec86c8b7ed6c5fffec1">setColor</a>(<span class="keyword">const</span> QColor&amp; color); </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOptionDialog.html#ad1ba26f2b87cea538abfb973e5dc6ffd">setVisibility</a>(<span class="keywordtype">bool</span> isVisible); </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Ui::OptionDialog* ui; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> setupColorChangeConnections(); </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> updateRedValue(<span class="keyword">const</span> QString&amp; text); </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> updateGreenValue(<span class="keyword">const</span> QString&amp; text); </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> updateBlueValue(<span class="keyword">const</span> QString&amp; text); </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// OPTIONDIALOG_H</span></div>
+<div class="ttc" id="aclassOptionDialog_html"><div class="ttname"><a href="classOptionDialog.html">OptionDialog</a></div><div class="ttdoc">A dialog for adjusting properties like name, color, and visibility.</div><div class="ttdef"><b>Definition:</b> optiondialog.h:28</div></div>
+<div class="ttc" id="aclassOptionDialog_html_a4540736a5c6e4468dad5165c7aefc8bc"><div class="ttname"><a href="classOptionDialog.html#a4540736a5c6e4468dad5165c7aefc8bc">OptionDialog::OptionDialog</a></div><div class="ttdeci">OptionDialog(QWidget *parent=nullptr)</div><div class="ttdoc">Constructs an OptionDialog object with a parent.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:21</div></div>
+<div class="ttc" id="aclassOptionDialog_html_a640a1faddda44f2567cf386de0085ec7"><div class="ttname"><a href="classOptionDialog.html#a640a1faddda44f2567cf386de0085ec7">OptionDialog::~OptionDialog</a></div><div class="ttdeci">~OptionDialog()</div><div class="ttdoc">Destroys the OptionDialog object.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:33</div></div>
+<div class="ttc" id="aclassOptionDialog_html_a9913b04ce34c705c692609ac85260c1d"><div class="ttname"><a href="classOptionDialog.html#a9913b04ce34c705c692609ac85260c1d">OptionDialog::getColor</a></div><div class="ttdeci">QColor getColor() const</div><div class="ttdoc">Retrieves the selected color from the dialog.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:51</div></div>
+<div class="ttc" id="aclassOptionDialog_html_ab7580ad4f76685e639e61cadd3ac86fd"><div class="ttname"><a href="classOptionDialog.html#ab7580ad4f76685e639e61cadd3ac86fd">OptionDialog::setName</a></div><div class="ttdeci">void setName(const QString &amp;name)</div><div class="ttdoc">Sets the item's name in the dialog.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:71</div></div>
+<div class="ttc" id="aclassOptionDialog_html_ace0af27c027082ead61b1e13dc32730e"><div class="ttname"><a href="classOptionDialog.html#ace0af27c027082ead61b1e13dc32730e">OptionDialog::getName</a></div><div class="ttdeci">QString getName() const</div><div class="ttdoc">Retrieves the item's name from the dialog.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:42</div></div>
+<div class="ttc" id="aclassOptionDialog_html_ad17c49ed397eb57a9487796bbe85ccbb"><div class="ttname"><a href="classOptionDialog.html#ad17c49ed397eb57a9487796bbe85ccbb">OptionDialog::getVisibility</a></div><div class="ttdeci">bool getVisibility() const</div><div class="ttdoc">Checks the visibility status from the dialog.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:62</div></div>
+<div class="ttc" id="aclassOptionDialog_html_ad1ba26f2b87cea538abfb973e5dc6ffd"><div class="ttname"><a href="classOptionDialog.html#ad1ba26f2b87cea538abfb973e5dc6ffd">OptionDialog::setVisibility</a></div><div class="ttdeci">void setVisibility(bool isVisible)</div><div class="ttdoc">Sets the visibility status in the dialog.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:91</div></div>
+<div class="ttc" id="aclassOptionDialog_html_add1ab3451fa5aec86c8b7ed6c5fffec1"><div class="ttname"><a href="classOptionDialog.html#add1ab3451fa5aec86c8b7ed6c5fffec1">OptionDialog::setColor</a></div><div class="ttdeci">void setColor(const QColor &amp;color)</div><div class="ttdoc">Updates the color displayed in the dialog.</div><div class="ttdef"><b>Definition:</b> optiondialog.cpp:80</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> class manages the main window and its UI components.  
+<p>Manages the main window and its UI components.  
  <a href="classMainWindow.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a>&gt;</code></p>
@@ -84,62 +84,80 @@ Inheritance diagram for MainWindow:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:a930de12c8da1bda6dad9c1548ecb9375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a930de12c8da1bda6dad9c1548ecb9375">handleButton1</a> ()</td></tr>
-<tr class="memdesc:a930de12c8da1bda6dad9c1548ecb9375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the first button click.  <a href="classMainWindow.html#a930de12c8da1bda6dad9c1548ecb9375">More...</a><br /></td></tr>
-<tr class="separator:a930de12c8da1bda6dad9c1548ecb9375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accf7f1ca023168f0c31d2f9580e8acab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#accf7f1ca023168f0c31d2f9580e8acab">handleButton2</a> ()</td></tr>
-<tr class="memdesc:accf7f1ca023168f0c31d2f9580e8acab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the second button click.  <a href="classMainWindow.html#accf7f1ca023168f0c31d2f9580e8acab">More...</a><br /></td></tr>
-<tr class="separator:accf7f1ca023168f0c31d2f9580e8acab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a143bb60757a3e3f88e208eedb2af7539"><td class="memItemLeft" align="right" valign="top"><a id="a143bb60757a3e3f88e208eedb2af7539"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">handleTreeClicked</a> ()</td></tr>
-<tr class="memdesc:a143bb60757a3e3f88e208eedb2af7539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles clicks on the tree view, displaying the selected item's name. <br /></td></tr>
+<tr class="memitem:a143bb60757a3e3f88e208eedb2af7539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">handleTreeClicked</a> ()</td></tr>
+<tr class="memdesc:a143bb60757a3e3f88e208eedb2af7539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the event when the tree view is clicked.  <a href="classMainWindow.html#a143bb60757a3e3f88e208eedb2af7539">More...</a><br /></td></tr>
 <tr class="separator:a143bb60757a3e3f88e208eedb2af7539"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a4866823ec0a9148c03ade962e65cf3"><td class="memItemLeft" align="right" valign="top"><a id="a3a4866823ec0a9148c03ade962e65cf3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">on_actionOpen_File_triggered</a> ()</td></tr>
-<tr class="memdesc:a3a4866823ec0a9148c03ade962e65cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot triggered by the action to open and load an STL file. It allows users to select an STL file to load, creating and appending a new <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> based on the file, and updates the rendering accordingly. <br /></td></tr>
+<tr class="memitem:a3a4866823ec0a9148c03ade962e65cf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">on_actionOpen_File_triggered</a> ()</td></tr>
+<tr class="memdesc:a3a4866823ec0a9148c03ade962e65cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot triggered to open and load files.  <a href="classMainWindow.html#a3a4866823ec0a9148c03ade962e65cf3">More...</a><br /></td></tr>
 <tr class="separator:a3a4866823ec0a9148c03ade962e65cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3e86f798258224dddea4be926bc879b"><td class="memItemLeft" align="right" valign="top"><a id="aa3e86f798258224dddea4be926bc879b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">on_actionItemOptions_triggered</a> ()</td></tr>
-<tr class="memdesc:aa3e86f798258224dddea4be926bc879b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a dialog for editing properties of the selected item. <br /></td></tr>
+<tr class="memitem:aa3e86f798258224dddea4be926bc879b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">on_actionItemOptions_triggered</a> ()</td></tr>
+<tr class="memdesc:aa3e86f798258224dddea4be926bc879b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggered when the 'Item Options' action is activated.  <a href="classMainWindow.html#aa3e86f798258224dddea4be926bc879b">More...</a><br /></td></tr>
 <tr class="separator:aa3e86f798258224dddea4be926bc879b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10dd6ba62620347530298d50585852de"><td class="memItemLeft" align="right" valign="top"><a id="a10dd6ba62620347530298d50585852de"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>on_actionNewGroup_triggered</b> ()</td></tr>
+<tr class="memitem:a10dd6ba62620347530298d50585852de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a10dd6ba62620347530298d50585852de">on_actionNewGroup_triggered</a> ()</td></tr>
+<tr class="memdesc:a10dd6ba62620347530298d50585852de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot triggered to handle the creation of a new group.  <a href="classMainWindow.html#a10dd6ba62620347530298d50585852de">More...</a><br /></td></tr>
 <tr class="separator:a10dd6ba62620347530298d50585852de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa75d76b0d8ffb280d4b6f748d5fa47d2"><td class="memItemLeft" align="right" valign="top"><a id="aa75d76b0d8ffb280d4b6f748d5fa47d2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>on_actionDeleteFile_triggered</b> ()</td></tr>
+<tr class="memitem:aa75d76b0d8ffb280d4b6f748d5fa47d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#aa75d76b0d8ffb280d4b6f748d5fa47d2">on_actionDeleteFile_triggered</a> ()</td></tr>
+<tr class="memdesc:aa75d76b0d8ffb280d4b6f748d5fa47d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot triggered to delete the currently selected file/part.  <a href="classMainWindow.html#aa75d76b0d8ffb280d4b6f748d5fa47d2">More...</a><br /></td></tr>
 <tr class="separator:aa75d76b0d8ffb280d4b6f748d5fa47d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2c3b3c2390abca1864a9132a08f5690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#ac2c3b3c2390abca1864a9132a08f5690">createModelPartFromFile</a> (const QString &amp;fileName)</td></tr>
+<tr class="memdesc:ac2c3b3c2390abca1864a9132a08f5690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> from a file and adds it to the tree.  <a href="classMainWindow.html#ac2c3b3c2390abca1864a9132a08f5690">More...</a><br /></td></tr>
+<tr class="separator:ac2c3b3c2390abca1864a9132a08f5690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a647e94d396505fe3b450140b04ee4347"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a647e94d396505fe3b450140b04ee4347">removeActorsRecursively</a> (<a class="el" href="classModelPart.html">ModelPart</a> *part)</td></tr>
+<tr class="memdesc:a647e94d396505fe3b450140b04ee4347"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively removes vtkActor objects from the renderer for a <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> and its descendants.  <a href="classMainWindow.html#a647e94d396505fe3b450140b04ee4347">More...</a><br /></td></tr>
+<tr class="separator:a647e94d396505fe3b450140b04ee4347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
-<tr class="memitem:a86443ea744fda3e9bad328c2fd1c3d6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">statusUpdateMessage</a> (const QString &amp;message, int timeout)</td></tr>
-<tr class="memdesc:a86443ea744fda3e9bad328c2fd1c3d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal to update the status bar message.  <a href="classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b">More...</a><br /></td></tr>
+<tr class="memitem:a86443ea744fda3e9bad328c2fd1c3d6b"><td class="memItemLeft" align="right" valign="top"><a id="a86443ea744fda3e9bad328c2fd1c3d6b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>statusUpdateMessage</b> (const QString &amp;message, int timeout)</td></tr>
 <tr class="separator:a86443ea744fda3e9bad328c2fd1c3d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa2a5945f9c4bf90022f0a7ad3db34c49"><td class="memItemLeft" align="right" valign="top"><a id="aa2a5945f9c4bf90022f0a7ad3db34c49"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">updateRender</a> ()</td></tr>
-<tr class="memdesc:aa2a5945f9c4bf90022f0a7ad3db34c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the rendering of the model based on the current tree structure. <br /></td></tr>
-<tr class="separator:aa2a5945f9c4bf90022f0a7ad3db34c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3efc38e6be895f53a3f973906e4174b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">updateRenderFromTree</a> (const QModelIndex &amp;index)</td></tr>
-<tr class="memdesc:a3efc38e6be895f53a3f973906e4174b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively adds actors to the renderer starting from the provided tree index.  <a href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">More...</a><br /></td></tr>
-<tr class="separator:a3efc38e6be895f53a3f973906e4174b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8035a5e66ab60aab2019ef6fa1c70b3d"><td class="memItemLeft" align="right" valign="top"><a id="a8035a5e66ab60aab2019ef6fa1c70b3d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>applyPropertiesToPart</b> (<a class="el" href="classModelPart.html">ModelPart</a> *part, const QString &amp;name, bool visibility, const QColor &amp;color, bool updateName=true)</td></tr>
-<tr class="separator:a8035a5e66ab60aab2019ef6fa1c70b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe1fed39002b2902cfd3863420dd5612"><td class="memItemLeft" align="right" valign="top"><a id="afe1fed39002b2902cfd3863420dd5612"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateChildrenProperties</b> (<a class="el" href="classModelPart.html">ModelPart</a> *part, bool visibility, const QColor &amp;color)</td></tr>
-<tr class="separator:afe1fed39002b2902cfd3863420dd5612"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996c5a2b6f77944776856f08ec30858d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a> (QWidget *parent=nullptr)</td></tr>
-<tr class="memdesc:a996c5a2b6f77944776856f08ec30858d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> object.  <a href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">More...</a><br /></td></tr>
+<tr class="memdesc:a996c5a2b6f77944776856f08ec30858d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classMainWindow.html" title="Manages the main window and its UI components.">MainWindow</a> object.  <a href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">More...</a><br /></td></tr>
 <tr class="separator:a996c5a2b6f77944776856f08ec30858d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98d00a93bc118200eeef9f9bba1dba7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a> ()</td></tr>
-<tr class="memdesc:ae98d00a93bc118200eeef9f9bba1dba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> object.  <a href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">More...</a><br /></td></tr>
+<tr class="memdesc:ae98d00a93bc118200eeef9f9bba1dba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classMainWindow.html" title="Manages the main window and its UI components.">MainWindow</a> class.  <a href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">More...</a><br /></td></tr>
 <tr class="separator:ae98d00a93bc118200eeef9f9bba1dba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a5945f9c4bf90022f0a7ad3db34c49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">updateRender</a> ()</td></tr>
+<tr class="memdesc:aa2a5945f9c4bf90022f0a7ad3db34c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the renderer with the current tree structure.  <a href="classMainWindow.html#aa2a5945f9c4bf90022f0a7ad3db34c49">More...</a><br /></td></tr>
+<tr class="separator:aa2a5945f9c4bf90022f0a7ad3db34c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3efc38e6be895f53a3f973906e4174b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">updateRenderFromTree</a> (const QModelIndex &amp;index)</td></tr>
+<tr class="memdesc:a3efc38e6be895f53a3f973906e4174b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively adds actors to the renderer from the tree structure.  <a href="classMainWindow.html#a3efc38e6be895f53a3f973906e4174b8">More...</a><br /></td></tr>
+<tr class="separator:a3efc38e6be895f53a3f973906e4174b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8035a5e66ab60aab2019ef6fa1c70b3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a8035a5e66ab60aab2019ef6fa1c70b3d">applyPropertiesToPart</a> (<a class="el" href="classModelPart.html">ModelPart</a> *part, const QString &amp;name, bool visibility, const QColor &amp;color, bool updateName=true)</td></tr>
+<tr class="memdesc:a8035a5e66ab60aab2019ef6fa1c70b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies specified properties to a part.  <a href="classMainWindow.html#a8035a5e66ab60aab2019ef6fa1c70b3d">More...</a><br /></td></tr>
+<tr class="separator:a8035a5e66ab60aab2019ef6fa1c70b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe1fed39002b2902cfd3863420dd5612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#afe1fed39002b2902cfd3863420dd5612">updateChildrenProperties</a> (<a class="el" href="classModelPart.html">ModelPart</a> *part, bool visibility, const QColor &amp;color)</td></tr>
+<tr class="memdesc:afe1fed39002b2902cfd3863420dd5612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively updates the properties of child parts.  <a href="classMainWindow.html#afe1fed39002b2902cfd3863420dd5612">More...</a><br /></td></tr>
+<tr class="separator:afe1fed39002b2902cfd3863420dd5612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c7cdff0faca003017a42f6558a8ceb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a74c7cdff0faca003017a42f6558a8ceb">initializePartList</a> ()</td></tr>
+<tr class="memdesc:a74c7cdff0faca003017a42f6558a8ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the part list model.  <a href="classMainWindow.html#a74c7cdff0faca003017a42f6558a8ceb">More...</a><br /></td></tr>
+<tr class="separator:a74c7cdff0faca003017a42f6558a8ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d7843b5c6219947dacec9e2f0ea1a56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a3d7843b5c6219947dacec9e2f0ea1a56">setupTreeView</a> ()</td></tr>
+<tr class="memdesc:a3d7843b5c6219947dacec9e2f0ea1a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the tree view in the UI.  <a href="classMainWindow.html#a3d7843b5c6219947dacec9e2f0ea1a56">More...</a><br /></td></tr>
+<tr class="separator:a3d7843b5c6219947dacec9e2f0ea1a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2334d55084925506d781b8c2c5fed463"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a2334d55084925506d781b8c2c5fed463">setupActions</a> ()</td></tr>
+<tr class="memdesc:a2334d55084925506d781b8c2c5fed463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the actions in the UI.  <a href="classMainWindow.html#a2334d55084925506d781b8c2c5fed463">More...</a><br /></td></tr>
+<tr class="separator:a2334d55084925506d781b8c2c5fed463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97b38985075c4c3cf7ae2ccd73c0a9ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a97b38985075c4c3cf7ae2ccd73c0a9ba">setupRenderer</a> ()</td></tr>
+<tr class="memdesc:a97b38985075c4c3cf7ae2ccd73c0a9ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the renderer for the VTK visualization.  <a href="classMainWindow.html#a97b38985075c4c3cf7ae2ccd73c0a9ba">More...</a><br /></td></tr>
+<tr class="separator:a97b38985075c4c3cf7ae2ccd73c0a9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfa32feecffce3959c99d145fc8b4854"><td class="memItemLeft" align="right" valign="top"><a id="adfa32feecffce3959c99d145fc8b4854"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#adfa32feecffce3959c99d145fc8b4854">connectSignals</a> ()</td></tr>
+<tr class="memdesc:adfa32feecffce3959c99d145fc8b4854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects signals from various UI elements to the corresponding slots. <br /></td></tr>
+<tr class="separator:adfa32feecffce3959c99d145fc8b4854"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae31b4602c41590066f0c77b9ed6b466"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#aae31b4602c41590066f0c77b9ed6b466">addModelPartToTree</a> ()</td></tr>
+<tr class="memdesc:aae31b4602c41590066f0c77b9ed6b466"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a model part to the tree view.  <a href="classMainWindow.html#aae31b4602c41590066f0c77b9ed6b466">More...</a><br /></td></tr>
+<tr class="separator:aae31b4602c41590066f0c77b9ed6b466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0bb75ab246727b7b01d5130a745d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainWindow.html#a1e0bb75ab246727b7b01d5130a745d86">createAction</a> (QAction **action, const QString &amp;text, void(MainWindow::*slot)())</td></tr>
+<tr class="memdesc:a1e0bb75ab246727b7b01d5130a745d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and configures a QAction.  <a href="classMainWindow.html#a1e0bb75ab246727b7b01d5130a745d86">More...</a><br /></td></tr>
+<tr class="separator:a1e0bb75ab246727b7b01d5130a745d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> class manages the main window and its UI components. </p>
-<p>The <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> class setups the UI, initializes a model for a tree view, and handles user interactions such as button clicks. </p>
+<div class="textblock"><p>Manages the main window and its UI components. </p>
+<p>Integrates UI setup, tree view model initialization, and user interaction handlers, such as button clicks and action triggers, to manage application components like rendering views, dialogs, and model part properties. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a996c5a2b6f77944776856f08ec30858d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a996c5a2b6f77944776856f08ec30858d">&#9670;&nbsp;</a></span>MainWindow()</h2>
@@ -165,11 +183,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateChildrenPropert
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> object. </p>
-<p>Constructor for the <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> class. Initializes the user interface and connects signals to slots.</p>
+<p>Constructs the <a class="el" href="classMainWindow.html" title="Manages the main window and its UI components.">MainWindow</a> object. </p>
+<p>Initializes the user interface, sets up the tree view, actions, renderer, and connects the necessary signals and slots.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parent</td><td>The parent widget, nullptr if there's no parent. </td></tr>
+    <tr><td class="paramname">parent</td><td>The parent widget of the <a class="el" href="classMainWindow.html" title="Manages the main window and its UI components.">MainWindow</a>, or nullptr if no parent. </td></tr>
   </table>
   </dd>
 </dl>
@@ -191,88 +209,67 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateChildrenPropert
       </table>
 </div><div class="memdoc">
 
-<p>Destroys the <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> object. </p>
-<p>Destructor for the <a class="el" href="classMainWindow.html" title="The MainWindow class manages the main window and its UI components.">MainWindow</a> class. Cleans up allocated resources. </p>
+<p>Destructor for the <a class="el" href="classMainWindow.html" title="Manages the main window and its UI components.">MainWindow</a> class. </p>
+<p>Cleans up the user interface and the dynamically allocated partList. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a930de12c8da1bda6dad9c1548ecb9375"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a930de12c8da1bda6dad9c1548ecb9375">&#9670;&nbsp;</a></span>handleButton1</h2>
+<a id="aae31b4602c41590066f0c77b9ed6b466"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae31b4602c41590066f0c77b9ed6b466">&#9670;&nbsp;</a></span>addModelPartToTree()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MainWindow::handleButton1 </td>
+          <td class="memname">void MainWindow::addModelPartToTree </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Handles the first button click. </p>
-<p>Handles the event when the first button is clicked. It emits a signal to update the status message accordingly. </p>
+<p>Adds a model part to the tree view. </p>
+<p>Creates a root item and a child item, appending the child to the root in the tree. </p>
 
 </div>
 </div>
-<a id="accf7f1ca023168f0c31d2f9580e8acab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accf7f1ca023168f0c31d2f9580e8acab">&#9670;&nbsp;</a></span>handleButton2</h2>
+<a id="a8035a5e66ab60aab2019ef6fa1c70b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8035a5e66ab60aab2019ef6fa1c70b3d">&#9670;&nbsp;</a></span>applyPropertiesToPart()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MainWindow::handleButton2 </td>
+          <td class="memname">void MainWindow::applyPropertiesToPart </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Handles the second button click. </p>
-<p>Handles the event when the second button is clicked. Opens an option dialog for user input and updates the status message based on the dialog's outcome. </p>
-
-</div>
-</div>
-<a id="a86443ea744fda3e9bad328c2fd1c3d6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86443ea744fda3e9bad328c2fd1c3d6b">&#9670;&nbsp;</a></span>statusUpdateMessage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MainWindow::statusUpdateMessage </td>
-          <td>(</td>
-          <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
+          <td class="paramtype"><a class="el" href="classModelPart.html">ModelPart</a> *&#160;</td>
+          <td class="paramname"><em>part</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>timeout</em>&#160;</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>visibility</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QColor &amp;&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>updateName</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -280,21 +277,419 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateChildrenPropert
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p>Applies specified properties to a part. </p>
+<p>Sets the provided name, visibility, and color to the specified part. If updateName is true, the name of the part is updated along with its visibility and color.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">part</td><td>The part to which the properties will be applied. </td></tr>
+    <tr><td class="paramname">name</td><td>The new name to set, applicable only if updateName is true. </td></tr>
+    <tr><td class="paramname">visibility</td><td>The new visibility state to apply. </td></tr>
+    <tr><td class="paramname">color</td><td>The new color to apply. </td></tr>
+    <tr><td class="paramname">updateName</td><td>Flag to determine whether to update the part's name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1e0bb75ab246727b7b01d5130a745d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e0bb75ab246727b7b01d5130a745d86">&#9670;&nbsp;</a></span>createAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::createAction </td>
+          <td>(</td>
+          <td class="paramtype">QAction **&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(MainWindow::*)()&#160;</td>
+          <td class="paramname"><em>slot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates and configures a QAction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>Pointer to the QAction pointer to be initialized. </td></tr>
+    <tr><td class="paramname">text</td><td>The display text for the action. </td></tr>
+    <tr><td class="paramname">slot</td><td>The slot to connect the action's triggered signal to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac2c3b3c2390abca1864a9132a08f5690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c3b3c2390abca1864a9132a08f5690">&#9670;&nbsp;</a></span>createModelPartFromFile</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::createModelPartFromFile </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Signal to update the status bar message. </p>
+<p>Creates a <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> from a file and adds it to the tree. </p>
+<p>Given a file name, this function creates a new <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a>, loads the data from the file, and appends it to the model tree, updating the rendering accordingly.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message to display. </td></tr>
-    <tr><td class="paramname">timeout</td><td>Duration in milliseconds to display the message. </td></tr>
+    <tr><td class="paramname">fileName</td><td>The name of the file to create the <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> from. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a143bb60757a3e3f88e208eedb2af7539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a143bb60757a3e3f88e208eedb2af7539">&#9670;&nbsp;</a></span>handleTreeClicked</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::handleTreeClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handles the event when the tree view is clicked. </p>
+<p>When a tree item is clicked, this function retrieves the selected item's data and emits a status update message to display the item's name. </p>
+
+</div>
+</div>
+<a id="a74c7cdff0faca003017a42f6558a8ceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74c7cdff0faca003017a42f6558a8ceb">&#9670;&nbsp;</a></span>initializePartList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::initializePartList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the part list model. </p>
+<p>This function creates a new <a class="el" href="classModelPartList.html" title="A custom item model that represents a list of model parts in a hierarchical structure.">ModelPartList</a> and assigns it to partList. </p>
+
+</div>
+</div>
+<a id="aa75d76b0d8ffb280d4b6f748d5fa47d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75d76b0d8ffb280d4b6f748d5fa47d2">&#9670;&nbsp;</a></span>on_actionDeleteFile_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionDeleteFile_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Slot triggered to delete the currently selected file/part. </p>
+<p>Removes the selected item from the model and the tree view, updating the renderer accordingly. If no item is selected, no action is taken. </p>
+
+</div>
+</div>
+<a id="aa3e86f798258224dddea4be926bc879b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3e86f798258224dddea4be926bc879b">&#9670;&nbsp;</a></span>on_actionItemOptions_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionItemOptions_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Triggered when the 'Item Options' action is activated. </p>
+<p>Opens a dialog for editing the properties (name, visibility, color) of the selected item. If changes are confirmed, it applies the updated properties to the selected item and all its child items recursively. </p>
+
+</div>
+</div>
+<a id="a10dd6ba62620347530298d50585852de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10dd6ba62620347530298d50585852de">&#9670;&nbsp;</a></span>on_actionNewGroup_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionNewGroup_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Slot triggered to handle the creation of a new group. </p>
+<p>Opens a dialog to input the name for the new group. Once confirmed, it adds a new group <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> to the current selection or to the root if nothing is selected. </p>
+
+</div>
+</div>
+<a id="a3a4866823ec0a9148c03ade962e65cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a4866823ec0a9148c03ade962e65cf3">&#9670;&nbsp;</a></span>on_actionOpen_File_triggered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::on_actionOpen_File_triggered </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Slot triggered to open and load files. </p>
+<p>Opens a file dialog allowing the user to select and load STL files. Each selected file creates a new <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> that is appended to the tree and rendered in the viewport. </p>
+
+</div>
+</div>
+<a id="a647e94d396505fe3b450140b04ee4347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647e94d396505fe3b450140b04ee4347">&#9670;&nbsp;</a></span>removeActorsRecursively</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::removeActorsRecursively </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classModelPart.html">ModelPart</a> *&#160;</td>
+          <td class="paramname"><em>part</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Recursively removes vtkActor objects from the renderer for a <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> and its descendants. </p>
+<p>Iterates over the <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> hierarchy, removing each associated vtkActor from the renderer. It ensures the graphical representation is consistent with the tree view's structure.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">part</td><td>The <a class="el" href="classModelPart.html" title="Represents a part or component of a model.">ModelPart</a> to start removal from; does nothing if null. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2334d55084925506d781b8c2c5fed463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2334d55084925506d781b8c2c5fed463">&#9670;&nbsp;</a></span>setupActions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::setupActions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up the actions in the UI. </p>
+<p>Initializes actions for item options and new group, connecting them to their respective slots. </p>
+
+</div>
+</div>
+<a id="a97b38985075c4c3cf7ae2ccd73c0a9ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97b38985075c4c3cf7ae2ccd73c0a9ba">&#9670;&nbsp;</a></span>setupRenderer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::setupRenderer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up the renderer for the VTK visualization. </p>
+<p>Initializes the VTK render window and renderer, and associates them with the UI. </p>
+
+</div>
+</div>
+<a id="a3d7843b5c6219947dacec9e2f0ea1a56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d7843b5c6219947dacec9e2f0ea1a56">&#9670;&nbsp;</a></span>setupTreeView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::setupTreeView </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up the tree view in the UI. </p>
+<p>Configures the model for the tree view and establishes the context menu policy. It also populates the tree with initial data. </p>
+
+</div>
+</div>
+<a id="afe1fed39002b2902cfd3863420dd5612"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe1fed39002b2902cfd3863420dd5612">&#9670;&nbsp;</a></span>updateChildrenProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::updateChildrenProperties </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classModelPart.html">ModelPart</a> *&#160;</td>
+          <td class="paramname"><em>part</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>visibility</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QColor &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recursively updates the properties of child parts. </p>
+<p>Applies the specified visibility and color recursively to all child parts of the given part. The name of the child parts is not updated.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">part</td><td>The part whose children will be updated. </td></tr>
+    <tr><td class="paramname">visibility</td><td>The visibility state to apply to all child parts. </td></tr>
+    <tr><td class="paramname">color</td><td>The color to apply to all child parts. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa2a5945f9c4bf90022f0a7ad3db34c49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2a5945f9c4bf90022f0a7ad3db34c49">&#9670;&nbsp;</a></span>updateRender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::updateRender </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the renderer with the current tree structure. </p>
+<p>Iterates over the top-level items in the tree and updates the rendering accordingly. This includes resetting the camera and updating the render view. </p>
 
 </div>
 </div>
@@ -314,10 +709,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateChildrenPropert
       </table>
 </div><div class="memdoc">
 
-<p>Recursively adds actors to the renderer starting from the provided tree index. </p>
+<p>Recursively adds actors to the renderer from the tree structure. </p>
+<p>Starting from the provided tree index, this function adds corresponding actors to the renderer. It recurses through all child items, adding each to the renderer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The starting point in the model tree for adding actors to the render. </td></tr>
+    <tr><td class="paramname">index</td><td>The model index to start adding actors from. </td></tr>
   </table>
   </dd>
 </dl>

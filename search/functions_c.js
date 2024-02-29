@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['set_92',['set',['../classModelPart.html#a3232893d070ddcec42631bf5b043add8',1,'ModelPart']]],
-  ['setcolor_93',['setColor',['../classOptionDialog.html#add1ab3451fa5aec86c8b7ed6c5fffec1',1,'OptionDialog']]],
-  ['setcolour_94',['setColour',['../classModelPart.html#abbaaa19d7d24b9f1138072d594bd838c',1,'ModelPart']]],
-  ['setname_95',['setName',['../classOptionDialog.html#ab7580ad4f76685e639e61cadd3ac86fd',1,'OptionDialog']]],
-  ['setvisibility_96',['setVisibility',['../classOptionDialog.html#ad1ba26f2b87cea538abfb973e5dc6ffd',1,'OptionDialog']]],
-  ['setvisible_97',['setVisible',['../classModelPart.html#a96c8cca32bd530bf28c6ab6a1ccc2353',1,'ModelPart']]],
-  ['statusupdatemessage_98',['statusUpdateMessage',['../classMainWindow.html#a86443ea744fda3e9bad328c2fd1c3d6b',1,'MainWindow']]]
+  ['removeactorsrecursively_123',['removeActorsRecursively',['../classMainWindow.html#a647e94d396505fe3b450140b04ee4347',1,'MainWindow']]],
+  ['removechild_124',['removeChild',['../classModelPart.html#a34987c55e266dc6eb39d403e00d1c0d5',1,'ModelPart']]],
+  ['removechildren_125',['removeChildren',['../classModelPart.html#ade36fbc29b3caa97db2346f859e42a98',1,'ModelPart']]],
+  ['removerows_126',['removeRows',['../classModelPartList.html#a4ef299af1b91fa4b04b5b9b4061bbf8e',1,'ModelPartList']]],
+  ['row_127',['row',['../classModelPart.html#a05bc0dd06a3658d9a2c46fa717dec910',1,'ModelPart']]],
+  ['rowcount_128',['rowCount',['../classModelPartList.html#a789e0f0faac195b26e33d6d26ee37007',1,'ModelPartList']]]
 ];

@@ -1,10 +1,9 @@
 /**
  * @file OptionDialog.h
- * @brief Dialog for editing option properties.
  *
- * Provides a dialog interface for editing properties such as name, color, and visibility
- * of a given object or model part. This class is part of the UI and allows users to
- * interactively modify the attributes of selected items.
+ * Defines the OptionDialog class, which provides a user interface for editing the properties
+ * such as name, color, and visibility of an object or model part. This dialog facilitates
+ * interactive user modifications to the attributes of selected items within the application.
  */
 
 #ifndef OPTIONDIALOG_H
@@ -16,11 +15,14 @@
 namespace Ui {
     class OptionDialog;
 }
+
 /**
  * @class OptionDialog
- * @brief Dialog class for editing item options.
+ * @brief A dialog for adjusting properties like name, color, and visibility.
  *
- * Allows editing of properties such as name, color, and visibility for items.
+ * This dialog class is utilized for editing various properties of an item, including its name,
+ * color, and visibility status. The class provides a graphical user interface for these modifications,
+ * integrating seamlessly with the rest of the application's UI components.
  */
 class OptionDialog : public QDialog
 {
@@ -30,16 +32,21 @@ public:
     explicit OptionDialog(QWidget* parent = nullptr);
     ~OptionDialog();
 
-    QString getName() const; ///< Retrieves the item's name.
-    QColor getColor() const; ///< Retrieves the item's color.
-    bool getVisibility() const; ///< Retrieves the item's visibility state.
+    QString getName() const; ///< Retrieves the item's name from the dialog.
+    QColor getColor() const; ///< Retrieves the selected color from the dialog.
+    bool getVisibility() const; ///< Checks the visibility status from the dialog.
 
-    void setName(const QString& name); ///< Sets the item's name.
-    void setColor(const QColor& color); ///< Sets the item's color.
-    void setVisibility(bool isVisible); ///< Sets the item's visibility state.
+    void setName(const QString& name); ///< Sets the item's name in the dialog.
+    void setColor(const QColor& color); ///< Updates the color displayed in the dialog.
+    void setVisibility(bool isVisible); ///< Sets the visibility status in the dialog.
 
 private:
-    Ui::OptionDialog* ui; ///< Pointer to the dialog's UI.
+    Ui::OptionDialog* ui; ///< Pointer to the user interface elements of the dialog.
+
+    void setupColorChangeConnections(); ///< Initializes connections for color value changes.
+    void updateRedValue(const QString& text); ///< Handles updates to the red color component.
+    void updateGreenValue(const QString& text); ///< Handles updates to the green color component.
+    void updateBlueValue(const QString& text); ///< Handles updates to the blue color component.
 };
 
 #endif // OPTIONDIALOG_H

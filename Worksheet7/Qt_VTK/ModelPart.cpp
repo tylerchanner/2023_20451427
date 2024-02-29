@@ -1,11 +1,8 @@
-/**     @file ModelPart.cpp
-  *
-  *     EEEE2076 - Software Engineering & VR Project
-  *
-  *     Template for model parts that will be added as treeview items
-  *
-  *     P Evans 2022
-  */
+/**
+ * @file ModelPart.cpp
+ * Includes the definition of the ModelPart class and the necessary VTK libraries
+ * to handle 3D model parts, particularly for rendering STL files.
+ */
 
 #include "ModelPart.h"
 #include <vtkActor.h>
@@ -17,217 +14,239 @@
 #include <vtkRenderWindowInteractor.h>
 #include <vtkRenderer.h>
 #include <vtkSTLReader.h>
-
-
 #include <vtkSmartPointer.h>
 #include <vtkDataSetMapper.h>
 
-
-   /**
-	* @brief Constructor for ModelPart.
-	* @param data Contains the initial data for the part, such as name and visibility.
-	* @param parent The parent ModelPart, if any; nullptr for the root part.
-	*/
-
+ /**
+  * Constructor for the ModelPart class.
+  * Initializes a model part with the given data and parent.
+  *
+  * @param data A list of QVariant items to initialize the item's data.
+  * @param parent The parent ModelPart, nullptr if it's the root.
+  */
 ModelPart::ModelPart(const QList<QVariant>& data, ModelPart* parent)
-	: m_itemData(data), m_parentItem(parent), isVisible(false) {
-
-	/* You probably want to give the item a default colour */
+    : m_itemData(data), m_parentItem(parent), isVisible(false) {
 }
 
 /**
- * @brief Destructor for ModelPart.
+ * Destructor for the ModelPart class.
+ * Cleans up the child items by deleting them.
  */
 ModelPart::~ModelPart() {
-	qDeleteAll(m_childItems);
+    qDeleteAll(m_childItems);
 }
 
 /**
- * @brief Appends a child part to this part.
- * @param item The child ModelPart to be added.
+ * Appends a child ModelPart to this model part.
+ *
+ * @param item The child ModelPart to append.
  */
 void ModelPart::appendChild(ModelPart* item) {
-	item->m_parentItem = this;
-	m_childItems.append(item);
+    item->m_parentItem = this;
+    m_childItems.append(item);
 }
 
 /**
- * @brief Retrieves a child part by its row.
- * @param row The row number of the child part to retrieve.
- * @return Pointer to the requested child ModelPart, or nullptr if invalid row.
+ * Retrieves the child item at the specified row.
+ *
+ * @param row The index of the child to retrieve.
+ * @return The child at the specified row, or nullptr if out of range.
  */
 ModelPart* ModelPart::child(int row) {
-	/* Return pointer to child item in row below this item.
-	 */
-	if (row < 0 || row >= m_childItems.size())
-		return nullptr;
-	return m_childItems.at(row);
+    if (row < 0 || row >= m_childItems.size())
+        return nullptr;
+    return m_childItems.at(row);
 }
 
 /**
- * @brief Counts the number of child parts.
- * @return The number of child parts.
+ * Counts the number of child items.
+ *
+ * @return The number of child items.
  */
 int ModelPart::childCount() const {
-	/* Count number of child items
-	 */
-	return m_childItems.count();
+    return m_childItems.count();
 }
 
 /**
- * @brief Counts the number of columns (properties) of this part.
- * @return The number of columns (properties).
+ * Counts the number of columns of data.
+ *
+ * @return The number of columns of item data.
  */
 int ModelPart::columnCount() const {
-	/* Count number of columns (properties) that this item has.
-	 */
-	return m_itemData.count();
+    return m_itemData.count();
 }
 
 /**
- * @brief Retrieves data for a specific column (property).
- * @param column The column number to retrieve data for.
- * @return The data stored in the specified column, as a QVariant.
+ * Retrieves the data at the specified column.
+ *
+ * @param column The column from which to retrieve the data.
+ * @return The data stored in the column.
  */
 QVariant ModelPart::data(int column) const {
-	if (column < 0 || column >= m_itemData.size())
-		return QVariant();
-	return m_itemData[column];
+    if (column < 0 || column >= m_itemData.size())
+        return QVariant();
+    return m_itemData[column];
 }
 
-
 /**
- * @brief Sets the data for a specific column (property).
- * @param column The column number to set data for.
- * @param value The value to set for the specified column.
+ * Sets the data at a specified column.
+ *
+ * @param column The column where the data is to be set.
+ * @param value The data value to set.
  */
 void ModelPart::set(int column, const QVariant& value) {
-	if (column >= 0 && column < m_itemData.size()) {
-		m_itemData[column] = value;
-	}
+    if (column >= 0 && column < m_itemData.size()) {
+        m_itemData[column] = value;
+    }
 }
 
-
 /**
- * @brief Gets the parent part of this part.
- * @return Pointer to the parent ModelPart, or nullptr if this is a root part.
+ * Gets the parent item of this model part.
+ *
+ * @return The parent ModelPart.
  */
 ModelPart* ModelPart::parentItem() {
-	return m_parentItem;
+    return m_parentItem;
 }
 
 /**
- * @brief Finds the row number of this part relative to its parent.
- * @return The row number of this part.
+ * Determines the row index of this item in the parent's child list.
+ *
+ * @return The index of this item.
  */
 int ModelPart::row() const {
-	// Return the row index of this item, relative to its parent.
-	if (m_parentItem && !m_parentItem->m_childItems.isEmpty())
-		return m_parentItem->m_childItems.indexOf(const_cast<ModelPart*>(this));
-	return 0;
+    if (m_parentItem)
+        return m_parentItem->m_childItems.indexOf(const_cast<ModelPart*>(this));
+    return 0;
 }
-
-void ModelPart::removeChildren(int position, int count) {
-	for (int row = 0; row < count; ++row) {
-		delete m_childItems.takeAt(position);
-	}
-}
-
 
 /**
- * @brief Sets the color of this part.
+ * Removes a range of children from the item.
+ *
+ * @param position The starting index from where children will be removed.
+ * @param count The number of children to remove.
+ */
+void ModelPart::removeChildren(int position, int count) {
+    for (int row = 0; row < count; ++row) {
+        delete m_childItems.takeAt(position);
+    }
+}
+
+/**
+ * Sets the color of the model part.
+ *
  * @param R Red component of the color.
  * @param G Green component of the color.
  * @param B Blue component of the color.
  */
 void ModelPart::setColour(const unsigned char R, const unsigned char G, const unsigned char B) {
-	color = QColor(R, G, B);
+    color = QColor(R, G, B);
 }
-
-unsigned char ModelPart::getColourR() {
-	return static_cast<unsigned char>(color.red());
-}
-
-unsigned char ModelPart::getColourG() {
-	return static_cast<unsigned char>(color.green());
-}
-
-
-unsigned char ModelPart::getColourB() {
-	return static_cast<unsigned char>(color.blue());
-}
-
-
-void ModelPart::setVisible(bool isVisible) {
-	this->isVisible = isVisible;
-}
-
-bool ModelPart::visible() { return isVisible; }
 
 /**
- * @brief Loads an STL file and initializes the visualization properties.
- * @param fileName The path to the STL file to load.
+ * Gets the red component of the model part's color.
+ *
+ * @return The red component value.
+ */
+unsigned char ModelPart::getColourR() {
+    return static_cast<unsigned char>(color.red());
+}
+
+/**
+ * Gets the green component of the model part's color.
+ *
+ * @return The green component value.
+ */
+unsigned char ModelPart::getColourG() {
+    return static_cast<unsigned char>(color.green());
+}
+
+/**
+ * Gets the blue component of the model part's color.
+ *
+ * @return The blue component value.
+ */
+unsigned char ModelPart::getColourB() {
+    return static_cast<unsigned char>(color.blue());
+}
+
+/**
+ * Sets the visibility of the model part.
+ *
+ * @param isVisible Boolean indicating whether the part is visible.
+ */
+void ModelPart::setVisible(bool isVisible) {
+    this->isVisible = isVisible;
+}
+
+/**
+ * Returns the visibility status of the model part.
+ *
+ * @return True if visible, false otherwise.
+ */
+bool ModelPart::visible() {
+    return isVisible;
+}
+
+/**
+ * Loads an STL file and creates the associated VTK actor for rendering.
+ *
+ * @param fileName The path to the STL file.
  */
 void ModelPart::loadSTL(QString fileName) {
-	vtkNew<vtkSTLReader> reader;
-	reader->SetFileName(fileName.toStdString().c_str());
-	reader->Update();
+    vtkNew<vtkSTLReader> reader;
+    reader->SetFileName(fileName.toStdString().c_str());
+    reader->Update();
 
-	vtkNew<vtkPolyDataMapper> mapper;
-	mapper->SetInputConnection(reader->GetOutputPort());
+    vtkNew<vtkPolyDataMapper> mapper;
+    mapper->SetInputConnection(reader->GetOutputPort());
 
-	vtkNew<vtkActor> actor;
-	actor->SetMapper(mapper);
-	// Set visual properties as needed
-	this->actor = actor; // Save the actor to the ModelPart instance
+    vtkNew<vtkActor> actor;
+    actor->SetMapper(mapper);
+    this->actor = actor;
 }
 
 /**
- * @brief Retrieves the actor for rendering this part.
- * @return A smart pointer to the vtkActor for this part.
+ * Retrieves the VTK actor associated with this model part.
+ *
+ * @return The VTK actor for this model part.
  */
 vtkSmartPointer<vtkActor> ModelPart::getActor() {
-	return this->actor;
+    return this->actor;
 }
-
 
 /**
- * @brief Creates and returns a new actor based on this part's properties.
- * @return A new vtkActor with properties duplicated from the original actor.
+ * Creates and returns a new VTK actor based on the current model data.
+ * Useful for creating duplicate representations of the model part.
+ *
+ * @return A new VTK actor, or nullptr if the original actor or reader is not set.
  */
 vtkSmartPointer<vtkActor> ModelPart::getNewActor() {
+    if (!this->actor || !this->reader) {
+        return nullptr;
+    }
 
-	if (!this->actor || !this->reader) {
-		return nullptr; // Return a null smart pointer if preconditions are not met
-	}
+    vtkSmartPointer<vtkPolyDataMapper> newMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+    newMapper->SetInputConnection(this->reader->GetOutputPort());
 
-	// 1. Create a new mapper, identical to the original for consistency
-	vtkSmartPointer<vtkPolyDataMapper> newMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-	newMapper->SetInputConnection(this->reader->GetOutputPort());
+    vtkSmartPointer<vtkActor> newActor = vtkSmartPointer<vtkActor>::New();
+    newActor->SetMapper(newMapper);
 
-	// 2. Create a new actor and link to the new mapper
-	vtkSmartPointer<vtkActor> newActor = vtkSmartPointer<vtkActor>::New();
-	newActor->SetMapper(newMapper);
+    if (this->actor->GetProperty()) {
+        newActor->GetProperty()->DeepCopy(this->actor->GetProperty());
+    }
 
-	// 3. Copy the vtkProperties of the original actor to the new actor
-	if (this->actor->GetProperty()) {
-		newActor->GetProperty()->DeepCopy(this->actor->GetProperty());
-	}
-
-	// Return the smart pointer to the new actor, ensuring memory management is handled by vtkSmartPointer
-	return newActor;
+    return newActor;
 }
 
+/**
+ * Removes a single child from the model part at the specified position.
+ *
+ * @param position The index of the child to remove.
+ */
 void ModelPart::removeChild(int position) {
-	if (position < 0 || position >= m_childItems.size())
-		return;
+    if (position < 0 || position >= m_childItems.size())
+        return;
 
-	delete m_childItems.takeAt(position);
+    delete m_childItems.takeAt(position);
 }
-
-
-
-
-
-
-

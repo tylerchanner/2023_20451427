@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-
+#include <QIcon>
 
 
 /**
@@ -18,7 +18,15 @@ int main(int argc, char* argv[])
 	QApplication a(argc, argv); // Create the QApplication instance.
 
 	MainWindow w; // Create the main window.
+
+
+	w.setWindowIcon(QIcon(":/Downloads/logo.png"));
+
+	// Set the window title
+	w.setWindowTitle("VR Model Viewer");
+
 	w.show(); // Show the main window.
 
 	return a.exec(); // Enter the main event loop and wait until exit() is called.
 }
+

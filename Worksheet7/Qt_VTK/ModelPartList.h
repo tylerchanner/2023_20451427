@@ -90,16 +90,17 @@ public:
       * @return the root item pointer
       */
     ModelPart* getRootItem();
-
+    ModelPart* getItem(const QModelIndex& index) const;
     /**
       */
     QModelIndex appendChild(QModelIndex& parent, const QList<QVariant>& data);
-    void removeItem(const QModelIndex& index);
+    bool removeRows(int position, int rows, const QModelIndex& parentIndex);
 
 
 
 
 private:
     ModelPart* rootItem;    /**< This is a pointer to the item at the base of the tree */
+    
 };
 #endif

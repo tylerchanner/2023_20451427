@@ -14,7 +14,8 @@
 #include <QList>
 #include <QVariant>
 #include <QColor>
-
+#include <memory>
+#include <vector>
 #include <vtkSmartPointer.h>
 #include <vtkMapper.h>
 #include <vtkActor.h>
@@ -126,6 +127,9 @@ public:
 	 */
 	void loadSTL(QString fileName);
 
+	void removeChild(int position);
+
+	void removeChildren(int position, int count);
 	/** Return actor
 	  * @return pointer to default actor for GUI rendering
 	  */
@@ -145,6 +149,7 @@ private:
 	vtkSmartPointer<vtkSTLReader> reader; /**< STL reader for loading geometrical data. */
 	vtkSmartPointer<vtkMapper> mapper; /**< Mapper for geometrical data. */
 	vtkSmartPointer<vtkActor> actor; /**< Actor for rendering. */
+
 };
 
 

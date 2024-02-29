@@ -1,11 +1,18 @@
 <RCC>
     <qresource prefix="/Icon"/>
-    <qresource prefix="/Icons">
-        <file>Icons/fileopen.png</file>
-        <file>Icons/filesave.png</file>
-        <file>Icons/help.png</file>
-        <file>Icons/print.png</file>
-        <file>Icons/startVR.png</file>
-        <file>Icons/stopVR.png</file>
+    <qresource prefix="/Icons"/>
+    <qresource prefix="/icons"/>
+    <qresource prefix="/">
+        <file>../../../../../../Downloads/print.png</file>
+        <file>../../../../../../Downloads/help.png</file>
+        <file>../../../../../../Downloads/save.png</file>
+        <file>../../../../../../Downloads/delete.png</file>
+        <file>../../../../../../Downloads/open.png</file>
+        <file>../../../../../../Downloads/stop.png</file>
+        <file>../../../../../../Downloads/play.png</file>
+        <file>../../../../../../Downloads/redo.png</file>
+        <file>../../../../../../Downloads/undo.png</file>
+        <file>../../../../../../Downloads/add.png</file>
+        <file>../../../../../../Downloads/options.png</file>
     </qresource>
 </RCC>

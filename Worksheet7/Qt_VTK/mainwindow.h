@@ -88,6 +88,9 @@ public slots:
 
 	void on_actionNewGroup_triggered();
 
+	void on_actionDeleteFile_triggered();
+
+
 
 
 private:
@@ -98,6 +101,7 @@ private:
 	QAction* actionNewGroup; // Action to create a new group
 	NewGroupDialog* newGroupDialog; // Pointer to the NewGroupDialog
 	QAction* actionDeleteGroup;
+	QAction* actionItemOptions;
 
 };
 

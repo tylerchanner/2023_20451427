@@ -121,12 +121,18 @@ ModelPart* ModelPart::parentItem() {
  * @return The row number of this part.
  */
 int ModelPart::row() const {
-	/* Return the row index of this item, relative to it's parent.
-	 */
-	if (m_parentItem)
+	// Return the row index of this item, relative to its parent.
+	if (m_parentItem && !m_parentItem->m_childItems.isEmpty())
 		return m_parentItem->m_childItems.indexOf(const_cast<ModelPart*>(this));
 	return 0;
 }
+
+void ModelPart::removeChildren(int position, int count) {
+	for (int row = 0; row < count; ++row) {
+		delete m_childItems.takeAt(position);
+	}
+}
+
 
 /**
  * @brief Sets the color of this part.
@@ -211,3 +217,17 @@ vtkSmartPointer<vtkActor> ModelPart::getNewActor() {
 	// Return the smart pointer to the new actor, ensuring memory management is handled by vtkSmartPointer
 	return newActor;
 }
+
+void ModelPart::removeChild(int position) {
+	if (position < 0 || position >= m_childItems.size())
+		return;
+
+	delete m_childItems.takeAt(position);
+}
+
+
+
+
+
+
+

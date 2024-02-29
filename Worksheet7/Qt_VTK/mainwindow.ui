@@ -101,8 +101,16 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen_File"/>
+    <addaction name="actionNew_Group"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionItem_Options"/>
    </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -116,11 +124,14 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionOpen_File"/>
+   <addaction name="actionItem_Options"/>
+   <addaction name="actionNew_Group"/>
+   <addaction name="actionDelete_File"/>
   </widget>
   <action name="actionOpen_File">
    <property name="icon">
     <iconset resource="icons.qrc">
-     <normaloff>:/Icons/Icons/fileopen.png</normaloff>:/Icons/Icons/fileopen.png</iconset>
+     <normaloff>:/Downloads/open.png</normaloff>:/Downloads/open.png</iconset>
    </property>
    <property name="text">
     <string>Open File</string>
@@ -129,10 +140,10 @@
     <enum>QAction::NoRole</enum>
    </property>
   </action>
-  <action name="actionactionItem_Options">
+  <action name="actionItem_Options">
    <property name="icon">
     <iconset resource="icons.qrc">
-     <normaloff>:/Icons/Icons/help.png</normaloff>:/Icons/Icons/help.png</iconset>
+     <normaloff>:/Downloads/options.png</normaloff>:/Downloads/options.png</iconset>
    </property>
    <property name="text">
     <string>Item Options</string>
@@ -145,8 +156,24 @@
    </property>
   </action>
   <action name="actionNew_Group">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/Downloads/add.png</normaloff>:/Downloads/add.png</iconset>
+   </property>
    <property name="text">
     <string>New Group</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionDelete_File">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/Downloads/delete.png</normaloff>:/Downloads/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete File</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

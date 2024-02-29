@@ -22,6 +22,7 @@
 #include <vtkCamera.h>
 #include <vtkNamedColors.h>
 #include <QDebug>
+#include <QMessageBox>
 
 
 
@@ -51,41 +52,19 @@ MainWindow::MainWindow(QWidget* parent) :
 	// Manually create a model tree
 	ModelPart* rootItem = this->partList->getRootItem();
 
-	//QString name = QString("Model");
-	//QString visible("true");
-	//QString colour("255,255,255");
 
-	//// Create child item
-	//ModelPart* childItem = new ModelPart({ name, visible, colour });
+	QString name = QString("Model");
+	QString visible("true");
+	QString colour("255,255,255");
 
-	//// Append to tree top-level
-	//rootItem->appendChild(childItem);
+	// Create child item
+	ModelPart* childItem = new ModelPart({ name, visible, colour });
+
+	// Append to tree top-level
+	rootItem->appendChild(childItem);
 
 
-		// Add 3 top level items
-	for (int i = 0; i < 3; i++) {
-		QString name = QString("TopLevel %1").arg(i);
-		QString visible("true");
-		QString colour("255,255,255");
 
-		// Create child item
-		ModelPart* childItem = new ModelPart({ name, visible, colour });
-
-		// Append to tree top-level
-		rootItem->appendChild(childItem);
-
-		// Add 5 sub-items
-		for (int j = 0; j < 5; j++) {
-			QString name = QString("Item %1,%2").arg(i).arg(j);
-			QString visible("true");
-			QString colour("255,255,255");
-
-			ModelPart* childChildItem = new ModelPart({ name, visible, colour });
-
-			// Append to parent
-			childItem->appendChild(childChildItem);
-		}
-	}
 
 
 
@@ -103,9 +82,13 @@ MainWindow::MainWindow(QWidget* parent) :
 	// Connect custom signal to status bar showMessage slot
 	connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
 
+	// Slot and Action for Delete File
+	connect(ui->actionDelete_File, &QAction::triggered, this, &MainWindow::on_actionDeleteFile_triggered);
+
 	// Create an action for the context menu
 	QAction* actionItemOptions = new QAction(tr("Item Options"), this);
 	connect(actionItemOptions, &QAction::triggered, this, &MainWindow::on_actionItemOptions_triggered);
+	connect(ui->actionItem_Options, &QAction::triggered, this, &MainWindow::on_actionItemOptions_triggered);
 
 	// Add the action to the tree view's context menu
 	ui->treeView->addAction(actionItemOptions);
@@ -113,6 +96,7 @@ MainWindow::MainWindow(QWidget* parent) :
 	actionNewGroup = new QAction(tr("New Group"), this);
 	ui->treeView->addAction(actionNewGroup); // Add the action to the tree view's context menu
 	connect(actionNewGroup, &QAction::triggered, this, &MainWindow::on_actionNewGroup_triggered);
+	connect(ui->actionNew_Group, &QAction::triggered, this, &MainWindow::on_actionNewGroup_triggered);
 
 
 	// Set up the render window
@@ -147,11 +131,13 @@ void MainWindow::handleTreeClicked() {
 void MainWindow::on_actionItemOptions_triggered() {
 	QModelIndex index = ui->treeView->currentIndex();
 	if (!index.isValid()) {
+		QMessageBox::information(this, tr("No Selection"), tr("There is no selected part."));
 		return;
 	}
 
 	ModelPart* selectedPart = static_cast<ModelPart*>(index.internalPointer());
 	if (!selectedPart) {
+		QMessageBox::information(this, tr("No Selection"), tr("There is no selected part."));
 		return;
 	}
 
@@ -380,3 +366,34 @@ void MainWindow::on_actionNewGroup_triggered()
 	newGroupDialog->show(); // Show the dialog only once after setting up the connection
 }
 
+void MainWindow::on_actionDeleteFile_triggered() {
+	QModelIndex currentIndex = ui->treeView->currentIndex();
+	if (!currentIndex.isValid())
+		return;
+
+	// Assuming the model is a ModelPartList and correctly set up for the tree view
+	ModelPartList* model = qobject_cast<ModelPartList*>(ui->treeView->model());
+	if (!model)
+		return;
+
+	// Calculate the position and count for removal
+	int position = currentIndex.row();
+	int count = 1; // Since we're deleting one item at a time
+
+	// Remove the actor from the renderer
+	ModelPart* selectedItem = static_cast<ModelPart*>(currentIndex.internalPointer());
+	vtkSmartPointer<vtkActor> actorToRemove = selectedItem ? selectedItem->getActor() : nullptr;
+	if (actorToRemove) {
+		renderer->RemoveActor(actorToRemove);
+		renderWindow->Render();
+	}
+
+	// Remove the item using the model's removeRows method
+	if (!model->removeRows(position, count, currentIndex.parent())) {
+		emit statusUpdateMessage("Error deleting item.", 5000);
+		return;
+	}
+
+	// Optionally, update the UI or send a status message
+	emit statusUpdateMessage("Item deleted successfully.", 5000);
+}

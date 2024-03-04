@@ -43,9 +43,9 @@ public:
     ModelPart* parentItem();
     int row() const;
     void setColour(const unsigned char R, const unsigned char G, const unsigned char B);
-    unsigned char getColourR();
-    unsigned char getColourG();
-    unsigned char getColourB();
+    unsigned char getColourR() const;
+    unsigned char getColourG() const;
+    unsigned char getColourB() const;
     void setVisible(bool isVisible);
     bool visible();
     void loadSTL(QString fileName);
@@ -53,6 +53,7 @@ public:
     void removeChildren(int position, int count);
     vtkSmartPointer<vtkActor> getActor();
     vtkSmartPointer<vtkActor> getNewActor();
+    QColor getColor() const;
 
 private:
     QList<ModelPart*> m_childItems; ///< Child parts of this model part.

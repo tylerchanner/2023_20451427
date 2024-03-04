@@ -9,6 +9,8 @@
 
 #include "optiondialog.h"
 #include "ui_optiondialog.h"
+#include <QColorDialog>
+
 
  /**
   * @brief Constructs an OptionDialog object with a parent.
@@ -22,6 +24,8 @@ OptionDialog::OptionDialog(QWidget* parent)
     : QDialog(parent), ui(new Ui::OptionDialog) {
     ui->setupUi(this);
     ui->checkBox->setChecked(true); // Default checked state
+    connect(ui->pushButton, &QPushButton::clicked, this, &OptionDialog::openColorDialog);
+
 
     // Connect scroll bars to line edits for RGB values
     setupColorChangeConnections();
@@ -33,6 +37,17 @@ OptionDialog::OptionDialog(QWidget* parent)
 OptionDialog::~OptionDialog() {
     delete ui;
 }
+
+void OptionDialog::openColorDialog() {
+    QColor initialColor = getColor(); // Get the currently selected color
+    QColor color = QColorDialog::getColor(initialColor, this, "Select Color");
+
+    if (color.isValid()) {
+        setColor(color);
+    }
+}
+
+
 
 /**
  * @brief Retrieves the entered name from the dialog.
@@ -119,7 +134,9 @@ void OptionDialog::setupColorChangeConnections() {
 void OptionDialog::updateRedValue(const QString& text) {
     bool ok;
     int value = text.toInt(&ok);
-    if (ok) ui->horizontalScrollBarRed->setValue(value);
+    if (ok && ui->horizontalScrollBarRed->value() != value) {
+        ui->horizontalScrollBarRed->setValue(value);
+    }
 }
 
 /**
@@ -130,7 +147,9 @@ void OptionDialog::updateRedValue(const QString& text) {
 void OptionDialog::updateGreenValue(const QString& text) {
     bool ok;
     int value = text.toInt(&ok);
-    if (ok) ui->horizontalScrollBarGreen->setValue(value);
+    if (ok && ui->horizontalScrollBarGreen->value() != value) {
+        ui->horizontalScrollBarGreen->setValue(value);
+    }
 }
 
 /**
@@ -141,5 +160,7 @@ void OptionDialog::updateGreenValue(const QString& text) {
 void OptionDialog::updateBlueValue(const QString& text) {
     bool ok;
     int value = text.toInt(&ok);
-    if (ok) ui->horizontalScrollBarBlue->setValue(value);
+    if (ok && ui->horizontalScrollBarBlue->value() != value) {
+        ui->horizontalScrollBarBlue->setValue(value);
+    }
 }

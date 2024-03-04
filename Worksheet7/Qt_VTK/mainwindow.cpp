@@ -334,6 +334,9 @@ void MainWindow::createModelPartFromFile(const QString& fileName) {
     emit statusUpdateMessage(QString("Loaded STL file: %1").arg(fileName), 5000);
 }
 
+
+
+
 /**
  * @brief Slot triggered to handle the creation of a new group.
  *

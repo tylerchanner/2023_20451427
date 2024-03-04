@@ -47,6 +47,7 @@ private:
     void updateRedValue(const QString& text); ///< Handles updates to the red color component.
     void updateGreenValue(const QString& text); ///< Handles updates to the green color component.
     void updateBlueValue(const QString& text); ///< Handles updates to the blue color component.
+    void openColorDialog();
 };
 
 #endif // OPTIONDIALOG_H

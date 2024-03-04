@@ -148,7 +148,7 @@ void ModelPart::setColour(const unsigned char R, const unsigned char G, const un
  *
  * @return The red component value.
  */
-unsigned char ModelPart::getColourR() {
+unsigned char ModelPart::getColourR() const {
     return static_cast<unsigned char>(color.red());
 }
 
@@ -157,7 +157,7 @@ unsigned char ModelPart::getColourR() {
  *
  * @return The green component value.
  */
-unsigned char ModelPart::getColourG() {
+unsigned char ModelPart::getColourG() const {
     return static_cast<unsigned char>(color.green());
 }
 
@@ -166,10 +166,14 @@ unsigned char ModelPart::getColourG() {
  *
  * @return The blue component value.
  */
-unsigned char ModelPart::getColourB() {
+unsigned char ModelPart::getColourB() const {
     return static_cast<unsigned char>(color.blue());
 }
 
+
+QColor ModelPart::getColor() const {
+    return QColor(getColourR(), getColourG(), getColourB());
+}
 /**
  * Sets the visibility of the model part.
  *

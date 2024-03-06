@@ -10,8 +10,8 @@
 #include <QFileDialog>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "optiondialog.h"
-#include "newgroupdialog.h"
+#include "OptionDialog.h"
+#include "NewGroupDialog.h"
 #include <vtkGenericOpenGLRenderWindow.h>
 #include <vtkRenderer.h>
 #include <vtkCylinderSource.h>
@@ -22,7 +22,12 @@
 #include <vtkNamedColors.h>
 #include <QDebug>
 #include <QMessageBox>
+#include <vtkPlaneSource.h>
 #include <QInputDialog>
+#include <vtkTransform.h>
+#include <vtkTransformPolyDataFilter.h>
+#include <QtConcurrent/QtConcurrentRun>
+
 
  /**
   * @brief Constructs the MainWindow object.
@@ -121,7 +126,10 @@ void MainWindow::setupRenderer() {
     ui->vtkWidget->setRenderWindow(renderWindow);
     renderer = vtkSmartPointer<vtkRenderer>::New();
     renderWindow->AddRenderer(renderer);
+
+    addFloor(); // Add the floor to the scene
 }
+
 
 /**
  * @brief Connects signals from various UI elements to the corresponding slots.
@@ -252,6 +260,8 @@ void MainWindow::updateChildrenProperties(ModelPart* part, bool visibility, cons
 void MainWindow::updateRender() {
     renderer->RemoveAllViewProps(); // Remove existing actors
 
+   
+
     int topLevelItemCount = partList->rowCount(QModelIndex());
     for (int i = 0; i < topLevelItemCount; ++i) {
         QModelIndex topLevelIndex = partList->index(i, 0, QModelIndex());
@@ -262,8 +272,11 @@ void MainWindow::updateRender() {
     renderer->GetActiveCamera()->Azimuth(30);
     renderer->GetActiveCamera()->Elevation(30);
     renderer->ResetCameraClippingRange();
+    
     renderer->Render();
+    
 }
+
 
 /**
  * @brief Recursively adds actors to the renderer from the tree structure.
@@ -313,25 +326,38 @@ void MainWindow::on_actionOpen_File_triggered() {
  * @param fileName The name of the file to create the ModelPart from.
  */
 void MainWindow::createModelPartFromFile(const QString& fileName) {
-    QFileInfo fileInfo(fileName);
-    QString justFileName = fileInfo.fileName();
+    // Run the STL loading in a separate thread
+    QtConcurrent::run([this, fileName] {
+        // This code is now running in a separate thread
+        QFileInfo fileInfo(fileName);
+        QString justFileName = fileInfo.fileName();
 
-    QList<QVariant> data = { QVariant(justFileName), QVariant("true"), QVariant("255,255,255") };
-    ModelPart* newPart = new ModelPart(data);
-    QModelIndex currentIndex = ui->treeView->currentIndex();
-    ModelPart* parentPart = currentIndex.isValid() ? static_cast<ModelPart*>(currentIndex.internalPointer()) : partList->getRootItem();
-    parentPart->appendChild(newPart);
-    newPart->loadSTL(fileName);
+        QList<QVariant> data = { QVariant(justFileName), QVariant("true"), QVariant("255,255,255") };
+        ModelPart* newPart = new ModelPart(data);
 
-    QColor whiteColor(255, 255, 255);
-    newPart->setColour(whiteColor.red(), whiteColor.green(), whiteColor.blue());
-    newPart->setVisible(true);
+        // Load STL file (heavy operation)
+        newPart->loadSTL(fileName);
 
-    QAbstractItemModel* model = ui->treeView->model();
-    model->dataChanged(model->index(newPart->row(), 0), model->index(newPart->row(), model->columnCount() - 1));
-    ui->treeView->model()->layoutChanged();
-    updateRender();
-    emit statusUpdateMessage(QString("Loaded STL file: %1").arg(fileName), 5000);
+        QColor whiteColor(255, 255, 255);
+        newPart->setColour(whiteColor.red(), whiteColor.green(), whiteColor.blue());
+        newPart->setVisible(true);
+
+        // Once done, schedule the following code to be run on the main thread
+        QMetaObject::invokeMethod(this, [this, newPart, fileName] {
+                QModelIndex currentIndex = ui->treeView->currentIndex();
+                ModelPart* parentPart = currentIndex.isValid() ? static_cast<ModelPart*>(currentIndex.internalPointer()) : partList->getRootItem();
+                parentPart->appendChild(newPart);
+
+                QAbstractItemModel* model = ui->treeView->model();
+                model->dataChanged(model->index(newPart->row(), 0), model->index(newPart->row(), model->columnCount() - 1));
+                emit model->dataChanged(model->index(newPart->row(), 0), model->index(newPart->row(), model->columnCount() - 1));
+                emit model->layoutChanged();
+
+                updateRender();
+                addFloor(); // Re-add the floor every time the scene is updated
+                emit statusUpdateMessage(QString("Loaded STL file: %1").arg(fileName), 5000);
+            }, Qt::QueuedConnection);
+    });
 }
 
 
@@ -465,4 +491,36 @@ void MainWindow::selectItemInTreeView(const QModelIndex& index) {
     ui->treeView->scrollTo(index);
     ui->treeView->selectionModel()->select(index, QItemSelectionModel::Select | QItemSelectionModel::Rows);
 }
+
+void MainWindow::addFloor() {
+    vtkSmartPointer<vtkPlaneSource> planeSource = vtkSmartPointer<vtkPlaneSource>::New();
+    planeSource->Update();
+
+    double scale = 500.0; // Adjust the scale as needed
+
+    vtkSmartPointer<vtkTransform> transform = vtkSmartPointer<vtkTransform>::New();
+    transform->Translate(50.0, 50.0, -10.0); // Adjust positioning if needed
+    transform->RotateX(0); // Rotating 90 degrees around the X-axis
+    transform->Scale(scale, scale, 1); // Scaling the plane
+
+    vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
+    transformFilter->SetInputConnection(planeSource->GetOutputPort());
+    transformFilter->SetTransform(transform);
+    transformFilter->Update();
+
+    vtkSmartPointer<vtkPolyDataMapper> mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+    mapper->SetInputConnection(transformFilter->GetOutputPort());
+
+    vtkSmartPointer<vtkActor> actor = vtkSmartPointer<vtkActor>::New();
+    actor->SetMapper(mapper);
+    actor->GetProperty()->SetColor(0.8, 0.8, 0.8); // Set the floor color
+
+    renderer->AddActor(actor);
+}
+
+
+
+
+
+
 
